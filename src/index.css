@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #08090d;
+    color: #e2e8f0;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Custom scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0d0f15;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #232938;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #e52b2b;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px rgba(229, 43, 43, 0.7), 0 0 20px rgba(229, 43, 43, 0.4);
+  }
+  .text-glow-amber {
+    text-shadow: 0 0 10px rgba(245, 158, 11, 0.7), 0 0 20px rgba(245, 158, 11, 0.4);
+  }
+  .box-glow {
+    box-shadow: 0 0 20px rgba(229, 43, 43, 0.25), inset 0 0 15px rgba(229, 43, 43, 0.1);
+  }
+  .hud-border {
+    border: 1px solid rgba(229, 43, 43, 0.3);
+    position: relative;
+  }
+  .hud-corner {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-color: #e52b2b;
+  }
+}
+
+/* Animations */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s infinite ease-in-out;
+}
