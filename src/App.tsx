@@ -634,6 +634,15 @@ export const App: React.FC = () => {
         }}
       />
 
+      {/* First-Run Onboarding Wizard (Clean Slate first experience) */}
+      {!settings.onboarding_completed && (
+        <OnboardingWizard
+          settings={settings}
+          onComplete={handleUpdateSettings}
+          onSkip={() => handleUpdateSettings({ ...settings, onboarding_completed: true })}
+        />
+      )}
+
       {/* Undo Toast for Deletions */}
       {undoToast && (
         <ToastUndo 
