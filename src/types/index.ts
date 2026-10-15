@@ -1,195 +1,215 @@
-export type ThemeMode = 'cinematic' | 'scifi';
-export type FontSize = 'small' | 'medium' | 'large';
-export type EntityType = 'project' | 'scene' | 'character' | 'idea' | 'asset';
-export type FieldType = 'text' | 'number' | 'date' | 'dropdown' | 'checkbox' | 'url';
+// Wholesale Jewellery Management System Data Models
 
-export interface WidgetConfig {
+export interface Item {
   id: string;
-  label?: string;
-  visible: boolean;
-  order: number;
-}
-
-export interface NavTabConfig {
-  id: string;
-  label: string;
-  visible: boolean;
-  order: number;
-}
-
-export interface ScriptColumnConfig {
-  id: string;
+  user_id?: string;
   name: string;
-  visible: boolean;
-  order: number;
-}
-
-export interface CustomFieldDefinition {
-  id: string;
-  entity_type: EntityType;
-  name: string;
-  field_type: FieldType;
-  options?: string[];
-}
-
-export interface StudioSettings {
-  id: string;
-  studio_name: string;
-  tagline: string;
-  version_label: string;
-  logo_url: string;
-  avatar_url: string;
-  theme_mode: ThemeMode;
-  accent_color: string;
-  font_size: FontSize;
-  glow_intensity: number; // 0-100
-  default_clip_length: number; // in seconds
-  monthly_credit_budget: number;
-  ultra_discount_enabled: boolean;
-  calendar_week_start: 'sun' | 'mon';
-  default_upload_time: string;
-  batch_short_per_day: number;
-  batch_long_every_n_days: number;
-  pinned_project_id?: string;
-  home_widgets: WidgetConfig[];
-  nav_tabs: NavTabConfig[];
-  script_columns: ScriptColumnConfig[];
-  onboarding_completed: boolean;
-  youtube_channel_id: string;
-  youtube_api_key?: string;
-  supabase_url?: string;
-  supabase_anon_key?: string;
-}
-
-export interface PipelineStage {
-  id: string;
-  name: string;
-  color: string;
-  icon: string;
-  position: number;
-}
-
-export interface Project {
-  id: string;
-  channel_id: string;
-  title: string;
-  format: string; // 'Short' | 'Long-form' | 'Reel'
-  series?: string;
-  stage_id: string;
-  status: string; // e.g. 'Draft', 'Script Ready', 'In Production', 'Editing', 'Ready to Publish'
-  tags: string[];
+  sku?: string;
+  category: string;
+  purchase_rate: number;
+  default_sale_rate: number;
+  current_stock: number;
+  opening_stock: number;
+  low_stock_threshold: number;
   description?: string;
-  thumbnail_url?: string;
-  deadline?: string;
-  pinned?: boolean;
-  custom_fields?: Record<string, any>;
+  is_archived: boolean;
   created_at: string;
   updated_at: string;
 }
 
-export interface SceneItem {
-  id: string;
-  project_id: string;
-  scene_number: number;
-  timing: string;
-  visual_prompt: string;
-  voiceover_script: string;
-  character_id?: string;
-  status: string;
-  custom_fields?: Record<string, any>;
+export type PaymentStatus =
+  | 'Advance Paid'
+  | 'Due Balance'
+  | 'Payment Complete'
+  | 'Paid'
+  | 'Partially Paid'
+  | 'Unpaid';
+
+// --- WHOLESALE PURCHASE MODELS ---
+export interface PurchaseItem {
+  id?: string;
+  purchase_id?: string;
+  item_id?: string;
+  item_name: string;
+  quantity: number;
+  unit_purchase_rate: number;
+  gst_rate: number; // e.g. 3 for jewellery (1.5% CGST + 1.5% SGST or 3% IGST)
+  taxable_amount: number;
+  gst_amount: number;
+  line_total: number;
 }
 
-export interface Character {
+export interface Purchase {
   id: string;
-  name: string;
-  role: string;
-  archetype?: string;
-  bio?: string;
-  avatar_url?: string;
-  voice_id?: string;
-  prompt_formula?: string;
-  custom_fields?: Record<string, any>;
-}
-
-export interface Idea {
-  id: string;
-  title: string;
-  theme: string;
+  user_id?: string;
+  purchase_date: string;
+  supplier_name: string;
+  supplier_gstin?: string;
+  supplier_invoice_number: string;
+  is_interstate?: boolean;
+  total_taxable: number;
+  total_gst: number;
+  grand_total: number;
+  payment_status: PaymentStatus;
+  amount_paid: number;
+  amount_due: number;
   notes?: string;
-  viral_index?: string;
-  status: string;
-  custom_fields?: Record<string, any>;
+  status: 'active' | 'cancelled';
+  created_at: string;
+  updated_at: string;
+  items?: PurchaseItem[];
 }
 
-export interface Asset {
+// --- WHOLESALE SALE & INVOICE MODELS ---
+export interface SaleItem {
+  id?: string;
+  sale_id?: string;
+  item_id?: string;
+  item_name: string;
+  quantity: number;
+  unit_cost: number; // Historical purchase cost snapshot
+  unit_sale_rate: number;
+  gst_rate: number; // e.g. 3% for jewellery
+  taxable_amount: number;
+  cgst_amount: number;
+  sgst_amount: number;
+  igst_amount: number;
+  gst_amount: number;
+  line_total: number;
+  line_cost: number;
+  line_profit: number;
+}
+
+export interface SalePayment {
   id: string;
-  name: string;
-  category: string;
-  asset_type: 'image' | 'audio' | 'video' | 'document';
-  url: string;
-  file_size?: string;
-  custom_fields?: Record<string, any>;
+  sale_id: string;
+  payment_date: string;
+  amount: number;
+  payment_method?: string;
+  notes?: string;
   created_at: string;
 }
 
-export interface AIModel {
+export interface Sale {
   id: string;
-  name: string;
-  provider: string;
-  credits_per_gen: number;
-  seconds_options: number[];
-  is_active: boolean;
-}
-
-export interface PromptTemplate {
-  id: string;
-  name: string;
-  category: string;
-  content: string;
-}
-
-export interface StatsSnapshot {
-  id: string;
-  channel_id: string;
-  subscribers: number;
-  views: number;
-  video_count: number;
+  user_id?: string;
+  invoice_number: string;
+  sale_date: string;
+  customer_name: string;
+  buyer_gstin?: string;
+  buyer_address?: string;
+  customer_phone?: string;
+  is_interstate: boolean; // false = CGST + SGST, true = IGST
+  payment_method: string;
+  payment_status: PaymentStatus;
+  total_taxable: number;
+  total_cgst: number;
+  total_sgst: number;
+  total_igst: number;
+  total_gst: number;
+  grand_total: number;
+  total_cost: number; // COGS
+  gross_profit: number;
+  amount_received: number;
+  amount_due: number;
+  notes?: string;
+  status: 'completed' | 'voided';
+  void_reason?: string;
   created_at: string;
+  updated_at: string;
+  items?: SaleItem[];
+  payments?: SalePayment[];
 }
 
-export interface YouTubeLiveStats {
-  channelId: string;
-  channelTitle: string;
-  subscribers: number;
-  views: number;
-  videoCount: number;
-  lastUpdated: string;
-  isLive: boolean;
-  deltaViews?: number;
-  deltaSubs?: number;
-  error?: string;
-  analyticsAsOfDate?: string;
-  avgRetention?: string;
-  ctr?: string;
-  watchTimeHours?: number;
-}
+// --- OPERATING EXPENSES ---
+export type ExpenseCategory =
+  | 'Rent'
+  | 'Electricity'
+  | 'Salary'
+  | 'Transport'
+  | 'Packaging'
+  | 'Repairs'
+  | 'Internet / Phone'
+  | 'Other';
 
-export interface YouTubeVideo {
+export interface Expense {
   id: string;
+  user_id?: string;
+  expense_date: string;
   title: string;
-  publishedAt: string;
-  thumbnail: string;
-  views: number;
-  likes: number;
-  comments: number;
-  duration?: string;
-  ctr?: string;
-  retention?: string;
+  category: ExpenseCategory | string;
+  amount: number;
+  payment_status?: PaymentStatus;
+  payment_method: string;
+  notes?: string;
+  is_cancelled: boolean;
+  created_at: string;
+  updated_at: string;
 }
 
-export interface ActivityLog {
+// --- BUSINESS SETTINGS ---
+export interface BusinessSettings {
   id: string;
-  action_type: string;
-  description: string;
-  created_at: string;
+  user_id?: string;
+  business_name: string;
+  hindi_header: string;
+  tagline: string;
+  business_address?: string;
+  business_gstin?: string;
+  state?: string;
+  phone?: string;
+  currency: string;
+  currency_symbol: string;
+  default_gst_rate: number; // default 3%
+  invoice_prefix: string;
+  next_invoice_number: number;
+  invoice_notes?: string;
+  updated_at: string;
 }
+
+// --- INVENTORY MOVEMENT & PERIOD LEDGER ---
+export interface StockMovementPeriod {
+  item_id: string;
+  item_name: string;
+  category: string;
+  opening_stock: number;
+  purchased_qty: number;
+  sold_qty: number;
+  current_stock: number;
+  purchase_rate: number;
+  default_sale_rate: number;
+  stock_value: number;
+}
+
+// --- SIMPLIFIED WHOLESALE DASHBOARD STATS ---
+export interface WholesaleDashboardStats {
+  month_sales: number;
+  month_purchases: number;
+  current_stock_units: number;
+  current_stock_value: number;
+  month_income: number;
+  month_expenditure: number;
+  month_net_result: number;
+}
+
+// --- 5 MAIN NAVIGATION FEATURES ---
+export type ActiveNavTab =
+  | 'dashboard'
+  | 'create_sale'
+  | 'create_purchase'
+  | 'inventory'
+  | 'reports'
+  | 'settings'
+  | 'backup'
+  // Legacy aliases
+  | 'purchase'
+  | 'sales'
+  | 'invoices'
+  | 'accounts';
+
+export type DateFilterPreset =
+  | 'today'
+  | 'this_month'
+  | 'last_month'
+  | 'financial_year'
+  | 'custom';

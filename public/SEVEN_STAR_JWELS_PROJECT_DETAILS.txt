@@ -1,0 +1,215 @@
+================================================================================
+          SEVEN STAR JWELS — COMPLETE PROJECT ARCHITECTURE & INTERVIEW GUIDE
+                    (Wholesale Jewellery Management & Ledger System)
+================================================================================
+
+1. PROJECT OVERVIEW & ELEVATOR PITCH
+--------------------------------------------------------------------------------
+Project Name   : SEVEN STAR JWELS
+Tagline        : "Quality Builds Trust" (॥ श्री ॥)
+Application    : Responsive Web Application (Desktop / Laptop & Mobile)
+Domain         : Wholesale Jewellery Inventory, GST Billing, & Accounting
+Cost           : STRICTLY ₹0.00 (Zero paid APIs, zero subscriptions, zero paid hosting)
+
+30-SECOND ELEVATOR PITCH FOR INTERVIEWS:
+"Maine SEVEN STAR JWELS banaya hai, jo ek wholesale jewellery business management
+aur accounting system hai. Iska main objective traditional aur expensive ERPs
+(jaise Tally ya Zoho) ko replace karke ek 100% free (₹0 ongoing cost), fast aur
+offline-first system dena tha.
+
+Frontend mein maine React 18 with TypeScript, Vite aur Tailwind CSS ('Midnight
+Ledger' luxury gold-navy theme) use kiya hai. Backend ke liye maine Supabase
+(PostgreSQL) aur ek custom Hybrid LocalStorage fallback architecture design kiya hai.
+Key highlights hain: COGS-based Income & Expenditure, Indian GST Splitting (1.5% CGST
++ 1.5% SGST vs 3% IGST), Period Stock Movement Ledger (Opening + In - Out = Closing),
+aur native print-ready A4 GST Tax Invoices bina kisi external paid library ke."
+
+
+================================================================================
+2. HOW THIS PROJECT IS 100% FREE (STRICT ₹0 BUDGET BREAKDOWN)
+================================================================================
+Aam taur par IT companies aur SaaS accounting platforms jewellers se har saal
+hazaron rupaye charge karte hain:
+  - Tally Prime        : ~₹18,000 to ₹54,000 (one time + renewal)
+  - Zoho Books         : ~₹1,500 to ₹3,000 / month
+  - Vyapar / Marg ERP  : ~₹2,500 to ₹6,000 / year
+  - AWS / DigitalOcean : ~₹1,000 to ₹3,000 / month (Server hosting)
+
+HUMNE ISE ZERO RUPEES (₹0) MEIN KAISE BANAYA?
+
+1. ZERO-COST HOSTING (Vercel Free Tier)
+   - Cost: ₹0.00 forever.
+   - Vercel ka free tier unlimited deployments, automatic SSL (HTTPS), global CDN,
+     aur custom domain support deta hai.
+   - Vite production build (`dist/`) ko seedha deploy kar sakte hain.
+
+2. ZERO-COST DATABASE & BACKEND (Supabase Free Tier)
+   - Cost: ₹0.00 forever.
+   - Supabase free tier mein milta hai:
+     * 500 MB dedicated PostgreSQL database (jewellery shop ke 10+ saal ke transactions
+       ke liye 500 MB bahut bada space hai, kyunki pure text data 10-20 MB hi hota hai).
+     * 50,000 Monthly Active Users (showroom owner aur staff ke liye more than enough).
+     * Auto-generated REST APIs + Real-time Sync (laptop aur mobile dono par live data).
+     * Row Level Security (RLS) built-in bina kisi paid firewall ke.
+
+3. OFFLINE FALLBACK ENGINE (Browser LocalStorage / IndexedDB)
+   - Cost: ₹0.00.
+   - Agar internet band ho jaye ya jeweller safar mein ho, app crash nahi hoti.
+   - Local storage layer par poora data cache rehta hai aur online aane par sync hota hai.
+
+4. NATIVE BROWSER PRINT ENGINE (Zero Paid PDF Library)
+   - Cost: ₹0.00.
+   - Paid PDF APIs (jaise DocuSign, PDF.co, jsPDF heavy bundles) ko avoid kiya.
+   - Standard CSS `@media print` aur `window.print()` se browser ke native PDF engine
+     ko use kiya, jo high-resolution A4 invoice print karta hai with 0 KB extra bundle.
+
+5. ZERO PAID LIBRARIES OR SUBSCRIPTIONS
+   - Icons: Lucide-react (Open source MIT license, ₹0).
+   - Fonts & Styling: Tailwind CSS & Google Fonts (Open source, ₹0).
+   - Version Control: GitHub (Free private repository, ₹0).
+
+
+================================================================================
+3. COMPLETE TECH STACK & REASONING (WHY WE CHOSE IT)
+================================================================================
+
+1. REACT 18 (Frontend Framework)
+   - Kyon?: Component-driven architecture. Purchase, Sales, Ledger, aur Modals
+     alag-alag re-usable blocks mein structured hain.
+   - State management: React Context API (`AppDataContext`, `AuthContext`) use kiya
+     jisse bina Redux ke lightweight aur fast global state milti hai.
+
+2. TYPESCRIPT (Language)
+   - Kyon?: Jewellery business mein decimal calculations (gold weight, GST tax,
+     rates) critical hote hain. TypeScript compile-time type safety deta hai,
+     jisse string aur number mixing ke financial bugs 100% eliminate ho gaye.
+
+3. VITE (Build Tool & Dev Server)
+   - Kyon?: Traditional `create-react-app` (Webpack) slow tha. Vite native ES-modules
+     use karta hai, jisse local dev server 1 second mein start hota hai aur
+     Hot Module Replacement (HMR) instant refresh deta hai. Production bundle
+     ko tree-shake karke super-lightweight bana deta hai.
+
+4. TAILWIND CSS (Styling & Design System)
+   - Kyon?: Luxury jewellery brand ke hisaab se custom "Midnight Ledger" dark theme
+     create ki gayi:
+       * Background: Deep Navy Slate (#0B1220, #111B2E, #16233B)
+       * Brand Accent: Royal Gold (#D6B36A, #B08E46)
+       * Text: Soft Ivory (#F5F3EE) aur Muted Slate (#AAB4C5)
+   - Fully responsive: Mobile phone aur Windows laptop dono par seamlessly fit hota hai.
+
+5. SUPABASE & POSTGRESQL (Backend & Cloud DB)
+   - Kyon?: Dedicated Node.js/Express server host karne ka kharcha bachane ke liye.
+     PostgreSQL ACID-compliant database hai, jo transactions ke waqt financial
+     integrity guarantee karta hai.
+
+
+================================================================================
+4. 10 CORE WHOLESALE FEATURES (FEATURE-BY-FEATURE EXPLANATION)
+================================================================================
+
+FEATURE 1: WHOLESALE PURCHASE ENTRY (Stock Inward)
+- Supplier details: Supplier Name (with autocomplete), Invoice #, Supplier GSTIN.
+- Inline Item Creation: Dropdown se existing item chuno YA direct form mein naya design
+  type kar do; system inventory mein item khud create kar leta hai bina screen chhede.
+- Inward GST: Line-level 3% GST calculation (Intra vs Inter-state).
+- Payment settlement: Amount Paid, Amount Due, aur Payment Status ('Paid', 'Partially Paid', 'Unpaid').
+- Purchase Register: Searchable list with expandable item drawers.
+
+FEATURE 2: WHOLESALE SALES ENTRY (Bikri / Billing)
+- Buyer details: Buyer Name, Buyer GSTIN (for wholesale tax credit), Delivery Address, Phone.
+- Stock Safety: Real-time stock counter and hard validation prevents over-selling or
+  negative inventory.
+- Negotiated Wholesale Pricing: Pre-filled default sale rate can be customized on-the-spot.
+- Direct Print: Bill complete hote hi 1-click A4 Tax Invoice modal open ho jata hai.
+
+FEATURE 3: PRINT-READY A4 WHOLESALE GST TAX INVOICE
+- Header: Top centre pavitra '॥ श्री ॥', SEVEN STAR JWELS, Address, GSTIN, State code.
+- HSN Code: Jewellery standard HSN 7113.
+- Indian Currency Words: Custom algorithm jo figures ko words mein convert karta hai
+  (e.g., ₹25,750 -> "Rupees Twenty-Five Thousand Seven Hundred Fifty Only").
+- Summary: Taxable value, CGST (1.5%), SGST (1.5%) ya IGST (3%), Received & Balance Due.
+- Footer: Terms & Conditions and Authorized Signatory box with print CSS optimizations.
+
+FEATURE 4: BILLS & INVOICES REGISTER
+- Search by Invoice #, Buyer Name, GSTIN, or Item description.
+- Filters: Payment status (Paid / Partially Paid / Unpaid) and date presets.
+- Actions: Reprint invoice, CSV export, and safe Void/Cancel action with automatic
+  stock restoration back into inventory.
+
+FEATURE 5: INVENTORY & STOCK STATUS (Period Movement)
+- Real-time stock tally: Total items, units in showroom, and stock valuation at purchase cost.
+- Period Stock Movement Formula:
+    Closing Stock = Opening Stock + Inward (Purchased) - Outward (Sold)
+- Modals for adding items (`ItemFormModal`) and stock adjustment (`StockAdjustModal`).
+
+FEATURE 6: MONTHLY SALES SUMMARY
+- 12-Month tabular register showing Inward Purchases, Taxable Sales, CGST, SGST, IGST,
+  Grand Total, and Collections Received with 1-click CSV export.
+
+FEATURE 7: INCOME & EXPENDITURE STATEMENT (True Trading Accounting)
+- Formula:
+    Taxable Sales Revenue (ex-GST) - Cost of Goods Sold (COGS) = Gross Profit
+    Gross Profit - Operating Expenses (Rent, Salary, Bijli) = Net Operating Result
+- Unsold stock is NOT treated as an expense; it is a balance sheet asset.
+- GST is treated as a pass-through tax liability, keeping business revenue clean.
+
+FEATURE 8: BALANCE SHEET / FINANCIAL POSITION
+- Current Assets: Inventory at purchase cost + Customer Receivables (pending dues).
+- Current Liabilities: Supplier Payables + Net GST Liability (Output GST - Input GST).
+- Net Business Position = Assets - Liabilities.
+- Transparent cash disclosure: No fake numbers; reconciles with physical cash & bank statements.
+
+FEATURE 9: STRICTLY INCLUSIVE DATE-RANGE REPORTS
+- Custom date selection (e.g. 21 Oct to 25 Oct) normalizes start date to 00:00:00
+  and end date to 23:59:59, including all transactions across all 5 calendar days.
+
+FEATURE 10: BACKUP, RESTORE & DISASTER RECOVERY
+- 1-Click JSON export containing items, purchases, sales, line items, and expenses.
+- Separate CSV spreadsheets for Excel/accountant.
+- Pre-restore validation prevents uploading corrupt or invalid files.
+
+
+================================================================================
+5. TOP 5 TECHNICAL CHALLENGES & HOW WE SOLVED THEM (INTERVIEW TALKING POINTS)
+================================================================================
+
+CHALLENGE 1: Financial Accuracy & Floating Point Precision
+- Problem: JavaScript floating-point arithmetic can produce values like `0.1 + 0.2 = 0.30000000000000004`.
+- Solution: All currency and GST math is wrapped in `Math.round((value) * 100) / 100`
+  and stored as numeric decimals, ensuring zero rounding drift.
+
+CHALLENGE 2: Historical Cost Snapshot Preservation
+- Problem: If a jeweller updates an item's purchase rate next week, past sales
+  profit margins shouldn't change.
+- Solution: Every sale item stores a permanent `unit_cost` snapshot at the moment
+  of sale. Historical profit reports remain immutable.
+
+CHALLENGE 3: Real-Time Stock Over-selling Protection
+- Problem: Two quick clicks could sell more stock than physically available.
+- Solution: Both UI state validation and atomic storage execution check available
+  stock before deducting. Voiding a bill reverses the deduction atomically.
+
+CHALLENGE 4: Timezone Normalization in Inclusive Date Ranges
+- Problem: Date strings without timestamps default to UTC `00:00:00`, which cuts off
+  the final day's evening sales in Indian Standard Time (UTC +5:30).
+- Solution: Explicitly normalized `rangeStart` to `T00:00:00` and `rangeEnd` to `T23:59:59`.
+
+CHALLENGE 5: Zero-Cost Offline/Online Hybrid Sync
+- Problem: If the shop internet drops, cloud-dependent software freezes.
+- Solution: Designed a repository abstraction layer (`storage.ts`). It queries
+  Supabase PostgreSQL when available, and automatically falls back to local browser
+  storage when offline.
+
+
+================================================================================
+6. VERIFICATION & QUALITY METRICS
+================================================================================
+- Automated Tests : 14/14 automated test suite passing (`node test_suite.cjs`).
+- TypeScript Build: `npm run build` succeeds with zero errors.
+- Bundle Size     : Optimized production bundle (~149 kB gzipped).
+- Local Access    : Desktop: http://localhost:3000/ | Mobile: http://172.20.10.2:3000/
+
+================================================================================
+                              END OF GUIDE
+================================================================================

@@ -1,31 +1,43 @@
-import { createClient, SupabaseClient } from '@supabase/supabase-js';
+﻿import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-// Environment credentials or configured credentials
-const envUrl = import.meta.env.VITE_SUPABASE_URL || '';
-const envKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+// Retrieve credentials from environment variables or browser runtime config
+export const getSupabaseConfig = () => {
+  const envUrl = import.meta.env.VITE_SUPABASE_URL || '';
+  const envKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 
-let supabaseClient: SupabaseClient | null = null;
+  const storedUrl = typeof window !== 'undefined' ? localStorage.getItem('SSJ_SUPABASE_URL') || '' : '';
+  const storedKey = typeof window !== 'undefined' ? localStorage.getItem('SSJ_SUPABASE_ANON_KEY') || '' : '';
 
-export const getSupabaseClient = (customUrl?: string, customKey?: string): SupabaseClient | null => {
-  const url = customUrl || envUrl;
-  const key = customKey || envKey;
+  return {
+    url: envUrl || storedUrl,
+    key: envKey || storedKey,
+    isConfigured: !!(envUrl || storedUrl) && !!(envKey || storedKey)
+  };
+};
 
-  if (!url || !key) {
-    return null;
-  }
+let clientInstance: SupabaseClient | null = null;
 
-  if (!supabaseClient) {
+export const getSupabaseClient = (): SupabaseClient | null => {
+  const { url, key, isConfigured } = getSupabaseConfig();
+  if (!isConfigured) return null;
+
+  if (!clientInstance) {
     try {
-      supabaseClient = createClient(url, key);
-    } catch (e) {
-      console.warn('Failed to initialize Supabase client:', e);
+      clientInstance = createClient(url, key, {
+        auth: {
+          persistSession: true,
+          autoRefreshToken: true
+        }
+      });
+    } catch (err) {
+      console.error('Failed to create Supabase client:', err);
       return null;
     }
   }
 
-  return supabaseClient;
+  return clientInstance;
 };
 
-export const isSupabaseConfigured = (): boolean => {
-  return !!(envUrl && envKey);
+export const resetSupabaseClient = () => {
+  clientInstance = null;
 };

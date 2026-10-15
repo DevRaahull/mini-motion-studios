@@ -1,98 +1,126 @@
-# Deployment & Setup Manual: Mini Motion Studios
+﻿# SEVEN STAR JWELS — ZERO-COST PRODUCTION DEPLOYMENT GUIDE
 
-Complete guide for deploying the **Mini Motion Studios Content Desk**, connecting your Supabase database, and establishing the Google YouTube API integration with real-time telemetry.
-
----
-
-## 1. Supabase Database Setup
-
-1. Create a free account or project at [supabase.com](https://supabase.com).
-2. Once your project is created, navigate to the **SQL Editor** tab on the left sidebar.
-3. Open `supabase/schema.sql` from this codebase, copy all contents, and click **Run**.
-   - This creates all required tables: `studio_settings`, `channels`, `pipeline_stages`, `custom_fields_definition`, `projects`, `scenes`, `characters`, `ideas`, `assets`, `ai_models`, `prompt_templates`, `stats_snapshots`, and `activity_logs`.
-   - The database starts with a **clean slate**: zero seeded demo projects, zero seeded characters, zero fake numbers.
-4. Retrieve your API credentials from **Project Settings > API**:
-   - `Project URL` (e.g. `https://xyzcompany.supabase.co`)
-   - `anon public key` (e.g. `eyJhbGciOi...`)
+> **STRICT BUDGET: ₹0.00**
+> This application uses 100% free-tier, production-grade cloud services:
+> - **Frontend Hosting**: Vercel Free (Hobby Plan)
+> - **Cloud Database & Auth**: Supabase Free Tier (PostgreSQL + RLS)
+> - **Source Control**: GitHub Free
+> - **Mobile/Desktop Experience**: Native Progressive Web App (PWA)
 
 ---
 
-## 2. Google Cloud YouTube Data API & OAuth Setup
+## 1. Zero-Cost Architectural Overview
 
-To enable real-time subscriber and view counts for your English YouTube channel (`UCFw0IWvKFQNsUoAHeyMgihA`):
+Both your Windows laptop and mobile phone connect to the **same authenticated Supabase PostgreSQL database**. Any sale, inventory edit, or expense recorded on your phone is instantly accessible on your laptop and vice versa.
 
-### A. Create Project in Google Cloud Console
-1. Visit the [Google Cloud Console](https://console.cloud.google.com/).
-2. Create a new project named `Mini Motion Studios Desk`.
-3. In **APIs & Services > Library**, search for and enable:
-   - **YouTube Data API v3**
-   - **YouTube Analytics API**
-
-### B. Configure API Key
-1. Go to **APIs & Services > Credentials**.
-2. Click **Create Credentials > API Key**.
-3. Copy the key and restrict it to **YouTube Data API v3**.
-4. You can enter this key directly into the studio Onboarding Wizard or in **Customize Studio > YouTube Channel**.
-
-### C. OAuth Consent Screen (CRITICAL: Avoiding the 7-Day Expiry)
-> [!IMPORTANT]
-> If your Google Cloud project is left in **"Testing"** mode:
-> - Refresh tokens automatically expire after **7 days**, forcing you to re-authenticate every week.
-> 
-> **How to avoid this:**
-> 1. In Google Cloud Console, navigate to **APIs & Services > OAuth consent screen**.
-> 2. Select **External** user type.
-> 3. Fill in your App Name (*Mini Motion Studios Desk*) and developer email.
-> 4. Add the following read-only scopes:
->    - `https://www.googleapis.com/auth/youtube.readonly`
->    - `https://www.googleapis.com/auth/yt-analytics.readonly`
-> 5. Click **Publish App** to switch the Publishing Status to **"In production"**.
-> 6. Because you are using read-only personal scopes for your own channel, you do **not** need Google verification for internal channel management. Your tokens will remain permanent and never expire every 7 days!
+- Laptop / Desktop Browser -> Vercel Free CDN -> Supabase Free PostgreSQL & Auth
+- Mobile Phone (iOS/Android PWA) -> Vercel Free CDN -> Supabase Free PostgreSQL & Auth
 
 ---
 
-## 3. Environment Variables Configuration
+## 2. Step 1: Create Free Supabase Project (2 Minutes)
 
-Create a `.env` file in the root directory (or configure these in your Vercel Dashboard):
+1. Go to [https://supabase.com](https://supabase.com) and click **Start your project** (Sign up with GitHub or email).
+2. Click **New Project**:
+   - **Name**: `seven-star-jwels`
+   - **Database Password**: Choose a strong password and save it securely.
+   - **Region**: Choose `South Asia (Mumbai)` for the lowest latency in India.
+   - **Pricing Plan**: Select **Free ($0/month)**.
+3. Click **Create new project** and wait ~1 minute for provisioning.
 
-```env
-# Supabase Configuration
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your-anon-key
+### Run Database Schema & RPC Functions
+1. In your Supabase Project Dashboard, go to **SQL Editor** on the left menu.
+2. Click **New query**.
+3. Copy the entire contents of `supabase/schema.sql` from this repository and paste it into the editor.
+4. Click **Run** (or press `Ctrl+Enter`).
+5. You will see: `Success. No rows returned`.
+   - All 7 tables (`business_settings`, `items`, `sales`, `sale_items`, `inventory_movements`, `expenses`, `audit_logs`) are created.
+   - Row Level Security (RLS) is enabled with isolation policies.
+   - Atomic RPC functions (`create_sale_atomic`, `void_sale_atomic`, `adjust_stock_atomic`) are compiled.
 
-# YouTube Configuration
-VITE_YOUTUBE_CHANNEL_ID=UCFw0IWvKFQNsUoAHeyMgihA
-VITE_YOUTUBE_API_KEY=your-google-api-key
-```
+### Copy Your API Credentials
+1. Go to **Project Settings** (gear icon at bottom left) > **API**.
+2. Copy:
+   - **Project URL** (e.g. `https://abcdefghijkl.supabase.co`)
+   - **Project API Keys** > `anon` / `public` key (starts with `eyJhbGciOi...`)
 
-*(Note: If environment variables are not set at deploy time, the application allows you to enter your credentials dynamically through the on-screen Onboarding Wizard or Settings modal!)*
+*(Never use the `service_role` key on the frontend).*
 
 ---
 
-## 4. Deploying to Vercel
+## 3. Step 2: Push Source Code to GitHub Free
 
-1. Push your repository to GitHub.
-2. Go to [vercel.com](https://vercel.com) and click **Add New Project**.
-3. Import the repository.
-4. Set the Framework Preset to **Vite**.
-5. Add the Environment Variables from Section 3 above.
+1. In your local repository directory (`d:\website`):
+   ```bash
+   git status
+   git add .
+   git commit -m "feat: complete SEVEN STAR JWELS jewellery business management system"
+   git push origin main
+   ```
+
+---
+
+## 4. Step 3: Deploy on Vercel Free (₹0)
+
+1. Go to [https://vercel.com](https://vercel.com) and sign in with your GitHub account.
+2. Click **Add New...** > **Project**.
+3. Under **Import Git Repository**, select your repository: `mini-motion-studios` (or renamed `seven-star-jwels`).
+4. In the **Configure Project** screen:
+   - **Framework Preset**: `Vite`
+   - **Root Directory**: `./`
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+5. Expand **Environment Variables** and add:
+   - `VITE_SUPABASE_URL` = *(your Supabase Project URL)*
+   - `VITE_SUPABASE_ANON_KEY` = *(your Supabase Anon Key)*
 6. Click **Deploy**.
+7. In ~45 seconds, your live application will be online at:
+   `https://your-project.vercel.app`
 
 ---
 
-## 5. Setting up Analytics Snapshots (Vercel Cron)
+## 5. Step 4: First-Run Owner Registration & Mobile PWA Installation
 
-YouTube Analytics data (retention curves, CTR, traffic sources) has a natural **24-48 hour delay** from YouTube. To periodically record snapshots for delta calculations:
+### Owner Account Setup
+1. Open your live Vercel URL on your laptop or mobile phone.
+2. Click **First-time setup? Register owner account**.
+3. Enter your personal email (e.g. `owner@sevenstarjwels.com`) and a strong master password.
+4. Click **Create Authorized Owner Account**.
+5. Once logged in, your account is authenticated with Supabase Auth and isolated via Row Level Security (RLS).
 
-1. Create a `vercel.json` file in the project root:
-```json
-{
-  "crons": [
-    {
-      "path": "/api/cron/snapshot",
-      "schedule": "0 */4 * * *"
-    }
-  ]
-}
-```
-2. The cron job triggers every 4 hours, stores a row in `stats_snapshots`, and calculates true growth deltas (e.g., `+24 views in last 4 hours`).
+### Installing PWA on Mobile Phone (Android)
+1. Open the URL in Google Chrome on your phone.
+2. Tap the three dots (menu) in top right.
+3. Tap **Add to Home screen** or **Install app**.
+4. The **SEVEN STAR JWELS** gold emblem icon will appear on your phone's home screen and open full-screen like a native mobile app without address bars!
+
+### Installing PWA on iPhone (iOS)
+1. Open the URL in Safari on your iPhone.
+2. Tap the **Share** button (box with upward arrow) at bottom.
+3. Scroll down and tap **Add to Home Screen**.
+4. Tap **Add**. The app installs natively.
+
+### Installing PWA on Windows Laptop / Desktop
+1. In Google Chrome or Microsoft Edge, look at the right side of the address bar.
+2. Click the **Install** icon (computer monitor with downward arrow).
+3. The app opens in its own standalone window with taskbar pinning.
+
+---
+
+## 6. Free-Tier Safeguards & Policy Transparency
+
+| Service | Free Tier Allowance | What Happens if Limit Reached? | How to Stay ₹0 Forever |
+| :--- | :--- | :--- | :--- |
+| **Vercel** | 100 GB monthly bandwidth, 6,000 build minutes | Bandwidth is more than enough for 50,000+ page views/month | No action needed for single-owner use |
+| **Supabase DB** | 500 MB PostgreSQL storage | Holds ~500,000 jewellery sale records before reaching 500MB | Download weekly JSON backup from Backup & Restore view |
+| **Supabase Auth** | 50,000 Monthly Active Users | Only 1 owner account needed | ₹0 forever |
+| **Supabase Inactivity** | Pauses project after 7 days without queries | Database pauses until you click "Restore" in Supabase dashboard | Logging in once a week keeps database active continuously |
+
+---
+
+## 7. Troubleshooting & Recovery
+
+- **Can I run offline?**
+  Yes. The app shell is cached locally by the service worker. If the internet drops while at the jewellery counter, existing inventory records remain viewable. Creating sales is disabled while offline to prevent negative inventory and sync conflicts.
+- **How do I restore my data?**
+  Go to **Backup & Restore** in the navigation menu, select your downloaded `.json` file, review the pre-restore counts preview, and click **Confirm and Restore Data**.

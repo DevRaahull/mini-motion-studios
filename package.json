@@ -1,12 +1,13 @@
 {
-  "name": "mini-motion-studios",
+  "name": "seven-star-jwels",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node test_suite.cjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.117.2",

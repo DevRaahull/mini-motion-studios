@@ -1,59 +1,67 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   body {
-    background-color: #08090d;
-    color: #e2e8f0;
-    font-family: 'Inter', sans-serif;
+    background-color: #0B1220;
+    color: #F5F3EE;
+    font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
   }
 
-  /* Custom scrollbars */
+  /* Midnight Ledger custom scrollbars */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #0d0f15;
+    background: #0B1220;
   }
   ::-webkit-scrollbar-thumb {
-    background: #232938;
-    border-radius: 3px;
+    background: #1E2B45;
+    border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #e52b2b;
+    background: #D6B36A;
   }
 }
 
 @layer utilities {
-  .text-glow {
-    text-shadow: 0 0 10px rgba(229, 43, 43, 0.7), 0 0 20px rgba(229, 43, 43, 0.4);
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #FFF0CA 0%, #D6B36A 50%, #B08E46 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
-  .text-glow-amber {
-    text-shadow: 0 0 10px rgba(245, 158, 11, 0.7), 0 0 20px rgba(245, 158, 11, 0.4);
-  }
-  .box-glow {
-    box-shadow: 0 0 20px rgba(229, 43, 43, 0.25), inset 0 0 15px rgba(229, 43, 43, 0.1);
-  }
-  .hud-border {
-    border: 1px solid rgba(229, 43, 43, 0.3);
-    position: relative;
-  }
-  .hud-corner {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    border-color: #e52b2b;
+  .border-gold-glow {
+    border-color: rgba(214, 179, 106, 0.4);
+    box-shadow: 0 0 15px rgba(214, 179, 106, 0.15);
   }
 }
 
-/* Animations */
-@keyframes pulse-subtle {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.85; transform: scale(1.02); }
-}
+/* Print Stylesheet for Invoices and Reports */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+  }
 
-.animate-pulse-subtle {
-  animation: pulse-subtle 3s infinite ease-in-out;
+  /* Hide navigation, sidebar, headers, buttons when printing */
+  aside, header, nav, .no-print, button, .offline-banner {
+    display: none !important;
+  }
+
+  /* Ensure invoice or report is visible and expands to full page */
+  .printable-area {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    color: black !important;
+  }
+
+  .printable-area * {
+    color: black !important;
+    border-color: #e5e7eb !important;
+  }
 }

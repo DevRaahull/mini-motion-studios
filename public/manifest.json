@@ -1,0 +1,19 @@
+﻿{
+  "short_name": "SEVEN STAR",
+  "name": "SEVEN STAR JWELS — Jewellery Inventory & Accounting",
+  "description": "Premium jewellery inventory, billing, sales, expenses, and accounting ledger.",
+  "icons": [
+    {
+      "src": "/logo_mark.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0B1220",
+  "theme_color": "#0B1220",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "scope": "/"
+}
