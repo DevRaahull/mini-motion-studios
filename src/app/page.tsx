@@ -407,7 +407,7 @@ export default function Home() {
             >
               <div className="stat-pill-icon text-lg">▶</div>
               <div className="stat-pill-text">
-                <span className="stat-pill-number">167+</span>
+                <span className="stat-pill-number">200+</span>
                 <span className="stat-pill-label">YouTube Subscribers</span>
               </div>
             </a>
