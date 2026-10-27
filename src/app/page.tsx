@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 
 interface FilmProject {
   id: string;
+  youtubeId?: string;
+  videoSrc?: string;
   title: string;
   category: "psychology" | "anime" | "experiments" | "commercial";
   categoryLabel: string;
@@ -17,48 +18,101 @@ interface FilmProject {
 
 const FILMS: FilmProject[] = [
   {
-    id: "manipulation",
-    title: "The Manipulation Game",
+    id: "respect-list",
+    title: "Don't Do This List for Earning Respect",
     category: "psychology",
-    categoryLabel: "Dark Psychology Series",
+    categoryLabel: "Dark Psychology & Respect",
     dotColor: "red",
-    duration: "05:24",
-    desc: "Decoding covert persuasion, psychological micro-cues, and high-stakes social influence in an anime cinematic frame.",
-    img: "/assets/thumb_manipulation.png",
-    watchUrl: "https://youtube.com/@reality._exe",
+    duration: "00:58",
+    desc: "Tactical psychology rules on commanding social respect. High-value presence never begs for validation — silent boundaries, grounded vocal tone, and unshakeable posture command the room.",
+    img: "/assets/real_thumbs/card_respect.jpg",
+    videoSrc: "/videos/respect_list.mp4",
+    watchUrl: "https://www.youtube.com/shorts/jEEmcm7SfkQ",
+    youtubeId: "jEEmcm7SfkQ",
   },
   {
-    id: "time",
-    title: "Why Time Feels Faster",
-    category: "psychology",
-    categoryLabel: "Human Behavior",
-    dotColor: "gold",
-    duration: "05:17",
-    desc: "The neuroscience of subjective time dilation, memory compression, and routine perception as we grow older.",
-    img: "/assets/thumb_time.png",
-    watchUrl: "https://youtube.com/@reality._exe",
-  },
-  {
-    id: "power",
-    title: "48 Laws of Power",
+    id: "stay-after-said",
+    title: "She Didn't Walk Away After He Said This",
     category: "anime",
-    categoryLabel: "Power & Influence",
-    dotColor: "purple",
-    duration: "07:08",
-    desc: "A visual adaptation of strategic dynamics, emotional restraint, and timeless laws of power in anime noir.",
-    img: "/assets/thumb_power.png",
-    watchUrl: "https://youtube.com/@reality._exe",
+    categoryLabel: "Anime Stories (Peter & Lily)",
+    dotColor: "gold",
+    duration: "01:06",
+    desc: "An emotionally intense cinematic anime scene exploring raw authenticity, emotional tension, and magnetic presence on a high-stakes first date.",
+    img: "/assets/real_thumbs/card_stay.jpg",
+    videoSrc: "/videos/stay_after_said.mp4",
+    watchUrl: "https://www.youtube.com/@minimotionstudioss",
   },
   {
-    id: "addiction",
-    title: "The Addiction Loop",
+    id: "attractive-struggle",
+    title: "The Hidden Struggle of Being Too Attractive",
+    category: "psychology",
+    categoryLabel: "Social Dynamics & Halo Effect",
+    dotColor: "purple",
+    duration: "00:54",
+    desc: "The psychological isolation behind extreme visual appeal. Exploring the halo effect, projected insecurities from peers, and how genuine connection gets masked by superficial perception.",
+    img: "/assets/real_thumbs/card_attractive.jpg",
+    videoSrc: "/videos/attractive_struggle.mp4",
+    watchUrl: "https://www.youtube.com/@minimotionstudioss",
+  },
+  {
+    id: "success-losing",
+    title: "Why Success Felt Like Losing Myself",
+    category: "anime",
+    categoryLabel: "Cinematic Anime Story",
+    dotColor: "gold",
+    duration: "00:56",
+    desc: "A cinematic anime story about relentless ambition, the cost of personal identity, and the haunting hollow silence waiting at the peak of victory.",
+    img: "/assets/real_thumbs/card_success.jpg",
+    videoSrc: "/videos/success_losing_myself.mp4",
+    watchUrl: "https://www.youtube.com/@minimotionstudioss",
+  },
+  {
+    id: "stranger-secret",
+    title: "I Made a Stranger Tell Me Their Deepest Secret",
     category: "experiments",
-    categoryLabel: "Behavioral Science",
+    categoryLabel: "Psychological Rapport Experiment",
     dotColor: "blue",
-    duration: "05:56",
-    desc: "The neurochemistry of dopamine anticipation, digital escapism, and habit cycles told through melancholic anime aesthetics.",
-    img: "/assets/thumb_addiction.png",
-    watchUrl: "https://youtube.com/@reality._exe",
+    duration: "00:55",
+    desc: "The vulnerability loop in social psychology. How calibrated silence, active micro-listening, and mirrored honesty break emotional guards in minutes.",
+    img: "/assets/real_thumbs/card_stranger.jpg",
+    videoSrc: "/videos/stranger_secret.mp4",
+    watchUrl: "https://www.youtube.com/@minimotionstudioss",
+  },
+  {
+    id: "manipulation-signs",
+    title: "Signs You're Being Manipulated (And Don't Know It)",
+    category: "psychology",
+    categoryLabel: "Dark Psychology Defense",
+    dotColor: "red",
+    duration: "00:57",
+    desc: "Subtle psychological covert tactics: emotional anchoring, gaslighting, and intermittent reinforcement. How to spot manipulation before it breaches your intuition.",
+    img: "/assets/real_thumbs/card_manipulation.jpg",
+    videoSrc: "/videos/manipulation_signs.mp4",
+    watchUrl: "https://www.youtube.com/@minimotionstudioss",
+  },
+  {
+    id: "rival-crumbles",
+    youtubeId: "kDHCSV1El3A",
+    title: "The Architect: I Destroyed a Corporate Rival – Then Regretted It",
+    category: "commercial",
+    categoryLabel: "Flagship AI Series (The Architect)",
+    dotColor: "red",
+    duration: "03:42",
+    desc: "A flagship cinematic production exploring corporate power dynamics, ruthless tactical retaliation, and the heavy psychological void left when victory arrives.",
+    img: "/assets/real_thumbs/kDHCSV1El3A.jpg",
+    watchUrl: "https://www.youtube.com/watch?v=kDHCSV1El3A",
+  },
+  {
+    id: "dont-explain",
+    youtubeId: "8OvyByu0VKU",
+    title: "Why Powerful People Stop Explaining Themselves",
+    category: "experiments",
+    categoryLabel: "Tactical Presence Experiment",
+    dotColor: "blue",
+    duration: "00:54",
+    desc: "The psychological science of tactical silence. Why high-status individuals state facts, embrace discomfort, and never justify their decisions to the room.",
+    img: "/assets/real_thumbs/8OvyByu0VKU.jpg",
+    watchUrl: "https://www.youtube.com/shorts/8OvyByu0VKU",
   },
 ];
 
@@ -203,9 +257,9 @@ export default function Home() {
             </h1>
             <div className="hero-tagline">IMAGINATION × AI × CINEMA</div>
             <p className="hero-desc">
-              A creative studio by Rahul Soni, exploring the power of AI to tell
-              emotionally powerful stories, cinematic visuals, and anime-style
-              narratives.
+              A creative studio by Rahul Soni exploring AI-powered cinematic
+              visuals, anime storytelling, dark psychology, and emotionally
+              compelling narratives.
             </p>
             <div className="hero-actions-row">
               <a href="#films" className="btn-crimson">
@@ -249,7 +303,6 @@ export default function Home() {
                 { id: "psychology", label: "Dark Psychology" },
                 { id: "anime", label: "Anime Stories" },
                 { id: "experiments", label: "AI Experiments" },
-                { id: "commercial", label: "Commercial" },
               ].map((tab) => (
                 <button
                   key={tab.id}
@@ -264,12 +317,12 @@ export default function Home() {
             </div>
 
             <a
-              href="https://youtube.com/@reality._exe"
+              href="https://www.youtube.com/@minimotionstudioss"
               target="_blank"
               rel="noopener noreferrer"
               className="creator-link"
             >
-              <span>View All Projects</span>
+              <span>Visit English Channel</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
@@ -281,11 +334,17 @@ export default function Home() {
               <article
                 key={film.id}
                 onClick={() => setSelectedFilm(film)}
-                className="film-card"
+                className="film-card group"
               >
                 <div className="film-thumb-wrap">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={film.img} alt={film.title} loading="lazy" />
+                  <div className="film-duration-badge">
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="5,3 19,12 5,21" />
+                    </svg>
+                    <span>{film.duration}</span>
+                  </div>
                   <div className="film-play-overlay">
                     <div className="play-circle">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff">
@@ -294,11 +353,17 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
+
                 <div className="film-body">
-                  <h3 className="sr-only">{film.title}</h3>
-                  <div className="film-category-meta">
-                    <span className={`cat-dot ${film.dotColor}`} />
-                    <span>{film.categoryLabel}</span>
+                  <h3 className="film-title">{film.title}</h3>
+                  <div className="film-bottom-meta">
+                    <div className="film-category-meta">
+                      <span className={`cat-dot ${film.dotColor}`} />
+                      <span>{film.categoryLabel}</span>
+                    </div>
+                    <span className="text-[11px] text-[#ff2a3b] font-medium flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                      Play ↗
+                    </span>
                   </div>
                 </div>
               </article>
@@ -400,7 +465,7 @@ export default function Home() {
 
           <div className="stats-items-cluster">
             <a
-              href="https://youtube.com/@reality._exe"
+              href="https://www.youtube.com/@minimotionstudioss"
               target="_blank"
               rel="noopener noreferrer"
               className="stat-pill-item"
@@ -444,7 +509,7 @@ export default function Home() {
         </div>
       </main>
 
-      {/* VIDEO PREVIEW MODAL */}
+      {/* VIDEO PREVIEW MODAL WITH EMBEDDED REAL PLAYABLE PLAYER */}
       {selectedFilm && (
         <div
           className="video-modal"
@@ -471,32 +536,44 @@ export default function Home() {
                 </svg>
               </button>
             </div>
-            <div className="video-player-frame">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={selectedFilm.img} alt={selectedFilm.title} />
-              <a
-                href={selectedFilm.watchUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="play-circle cursor-pointer absolute"
-                style={{ width: "64px", height: "64px" }}
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff">
-                  <polygon points="6,3 20,12 6,21" />
-                </svg>
-              </a>
+
+            {/* REAL PLAYABLE VIDEO PLAYER */}
+            <div className="video-player-frame flex items-center justify-center bg-black relative">
+              {selectedFilm.videoSrc ? (
+                <video
+                  src={selectedFilm.videoSrc}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="w-full h-full max-h-[60vh] object-contain bg-black"
+                />
+              ) : selectedFilm.youtubeId ? (
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${selectedFilm.youtubeId}?autoplay=1&rel=0&modestbranding=1`}
+                  title={selectedFilm.title}
+                  className="w-full h-full border-0 absolute inset-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              ) : null}
             </div>
+
             <div className="video-info-strip">
-              <p className="text-[#94a3b8] text-[13.5px] max-w-[520px]">
-                {selectedFilm.desc}
-              </p>
+              <div>
+                <span className="text-[11px] font-mono-tag text-[#ff2a3b] uppercase tracking-wider block mb-1">
+                  {selectedFilm.categoryLabel}
+                </span>
+                <p className="text-[#94a3b8] text-[13.5px] max-w-[540px]">
+                  {selectedFilm.desc}
+                </p>
+              </div>
               <a
                 href={selectedFilm.watchUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-crimson"
+                className="btn-crimson whitespace-nowrap"
               >
-                <span>Watch on Channel</span>
+                <span>Watch on YouTube</span>
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M7 17L17 7M17 7H7M17 7V17" />
                 </svg>
@@ -568,7 +645,7 @@ export default function Home() {
               </a>
 
               <a
-                href="https://youtube.com/@reality._exe"
+                href="https://www.youtube.com/@minimotionstudioss"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between p-3.5 bg-white/[0.04] border border-white/10 rounded-xl text-white no-underline hover:border-[#e50914] hover:bg-[#e50914]/10 transition-all"
@@ -576,7 +653,7 @@ export default function Home() {
                 <div className="flex items-center gap-3">
                   <span className="text-xl">▶</span>
                   <div className="flex flex-col">
-                    <span className="text-[11px] text-[#94a3b8] font-mono-tag">YOUTUBE CHANNEL</span>
+                    <span className="text-[11px] text-[#94a3b8] font-mono-tag">YOUTUBE (ENGLISH)</span>
                     <span className="text-sm font-semibold">Mini Motion Studios</span>
                   </div>
                 </div>
