@@ -7,9 +7,9 @@ interface FilmProject {
   youtubeId?: string;
   videoSrc?: string;
   title: string;
-  category: "psychology" | "anime" | "experiments" | "commercial";
+  category: "hindi-drama" | "psychology" | "anime" | "experiments" | "commercial";
   categoryLabel: string;
-  dotColor: "red" | "gold" | "purple" | "blue";
+  dotColor: "red" | "gold" | "purple" | "blue" | "emerald";
   duration: string;
   desc: string;
   img: string;
@@ -17,6 +17,30 @@ interface FilmProject {
 }
 
 const FILMS: FilmProject[] = [
+  {
+    id: "badnaam-ep1",
+    title: "Badnaam De Luca: Lucas Ka Sach (Ep. 1)",
+    category: "hindi-drama",
+    categoryLabel: "Hindi AI Micro-Drama",
+    dotColor: "red",
+    duration: "01:34",
+    desc: "Original Hindi AI Micro-Drama directed by Rahul Soni. Morgan ke ilzaam aur Romano pariwaar ke sach ke beech Lucas De Luca apne parivaar ke dafn raaz dhoondhta hai.",
+    img: "/assets/real_thumbs/card_badnaam_ep1.jpg",
+    videoSrc: "/videos/badnaam_de_luca_ep1.mp4",
+    watchUrl: "https://www.youtube.com/@MiniMotionStudiosHindi",
+  },
+  {
+    id: "badnaam-ep2",
+    title: "Badnaam De Luca: 100M Secret Debt (Ep. 2)",
+    category: "hindi-drama",
+    categoryLabel: "Hindi AI Micro-Drama",
+    dotColor: "gold",
+    duration: "01:34",
+    desc: "High-stakes hyper-realistic Hindi micro-drama. Alessia aur Lucas ke beech ka ghamasan shuru hota hai jab 100 million ke secret debt ka khulasa hota hai.",
+    img: "/assets/real_thumbs/card_badnaam_ep2.jpg",
+    videoSrc: "/videos/badnaam_de_luca_ep2.mp4",
+    watchUrl: "https://www.youtube.com/@MiniMotionStudiosHindi",
+  },
   {
     id: "respect-list",
     title: "Don't Do This List for Earning Respect",
@@ -43,27 +67,15 @@ const FILMS: FilmProject[] = [
     watchUrl: "https://www.youtube.com/@minimotionstudioss",
   },
   {
-    id: "attractive-struggle",
-    title: "The Hidden Struggle of Being Too Attractive",
+    id: "manipulation-signs",
+    title: "Signs You're Being Manipulated (And Don't Know It)",
     category: "psychology",
-    categoryLabel: "Social Dynamics & Halo Effect",
-    dotColor: "purple",
-    duration: "00:54",
-    desc: "The psychological isolation behind extreme visual appeal. Exploring the halo effect, projected insecurities from peers, and how genuine connection gets masked by superficial perception.",
-    img: "/assets/real_thumbs/card_attractive.jpg",
-    videoSrc: "/videos/attractive_struggle.mp4",
-    watchUrl: "https://www.youtube.com/@minimotionstudioss",
-  },
-  {
-    id: "success-losing",
-    title: "Why Success Felt Like Losing Myself",
-    category: "anime",
-    categoryLabel: "Cinematic Anime Story",
-    dotColor: "gold",
-    duration: "00:56",
-    desc: "A cinematic anime story about relentless ambition, the cost of personal identity, and the haunting hollow silence waiting at the peak of victory.",
-    img: "/assets/real_thumbs/card_success.jpg",
-    videoSrc: "/videos/success_losing_myself.mp4",
+    categoryLabel: "Dark Psychology Defense",
+    dotColor: "red",
+    duration: "00:57",
+    desc: "Subtle psychological covert tactics: emotional anchoring, gaslighting, and intermittent reinforcement. How to spot manipulation before it breaches your intuition.",
+    img: "/assets/real_thumbs/card_manipulation.jpg",
+    videoSrc: "/videos/manipulation_signs.mp4",
     watchUrl: "https://www.youtube.com/@minimotionstudioss",
   },
   {
@@ -79,40 +91,16 @@ const FILMS: FilmProject[] = [
     watchUrl: "https://www.youtube.com/@minimotionstudioss",
   },
   {
-    id: "manipulation-signs",
-    title: "Signs You're Being Manipulated (And Don't Know It)",
-    category: "psychology",
-    categoryLabel: "Dark Psychology Defense",
-    dotColor: "red",
-    duration: "00:57",
-    desc: "Subtle psychological covert tactics: emotional anchoring, gaslighting, and intermittent reinforcement. How to spot manipulation before it breaches your intuition.",
-    img: "/assets/real_thumbs/card_manipulation.jpg",
-    videoSrc: "/videos/manipulation_signs.mp4",
-    watchUrl: "https://www.youtube.com/@minimotionstudioss",
-  },
-  {
     id: "rival-crumbles",
     youtubeId: "kDHCSV1El3A",
     title: "The Architect: I Destroyed a Corporate Rival – Then Regretted It",
-    category: "commercial",
+    category: "anime",
     categoryLabel: "Flagship AI Series (The Architect)",
-    dotColor: "red",
+    dotColor: "gold",
     duration: "03:42",
     desc: "A flagship cinematic production exploring corporate power dynamics, ruthless tactical retaliation, and the heavy psychological void left when victory arrives.",
     img: "/assets/real_thumbs/kDHCSV1El3A.jpg",
     watchUrl: "https://www.youtube.com/watch?v=kDHCSV1El3A",
-  },
-  {
-    id: "dont-explain",
-    youtubeId: "8OvyByu0VKU",
-    title: "Why Powerful People Stop Explaining Themselves",
-    category: "experiments",
-    categoryLabel: "Tactical Presence Experiment",
-    dotColor: "blue",
-    duration: "00:54",
-    desc: "The psychological science of tactical silence. Why high-status individuals state facts, embrace discomfort, and never justify their decisions to the room.",
-    img: "/assets/real_thumbs/8OvyByu0VKU.jpg",
-    watchUrl: "https://www.youtube.com/shorts/8OvyByu0VKU",
   },
 ];
 
@@ -360,6 +348,7 @@ export default function Home() {
             <div className="filter-tabs-capsule">
               {[
                 { id: "all", label: "All Work" },
+                { id: "hindi-drama", label: "Hindi Micro-Drama" },
                 { id: "psychology", label: "Dark Psychology" },
                 { id: "anime", label: "Anime Stories" },
                 { id: "experiments", label: "AI Experiments" },
@@ -376,17 +365,25 @@ export default function Home() {
               ))}
             </div>
 
-            <a
-              href="https://www.youtube.com/@minimotionstudioss"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="creator-link"
-            >
-              <span>Visit English Channel</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M7 17L17 7M17 7H7M17 7V17" />
-              </svg>
-            </a>
+            <div className="hidden lg:flex items-center gap-3">
+              <a
+                href="https://www.youtube.com/@MiniMotionStudiosHindi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="creator-link text-[#f59e0b] hover:text-white"
+              >
+                <span>Hindi Channel ↗</span>
+              </a>
+              <span className="text-white/20">|</span>
+              <a
+                href="https://www.youtube.com/@minimotionstudioss"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="creator-link"
+              >
+                <span>English Channel ↗</span>
+              </a>
+            </div>
           </div>
 
           <div className="films-grid">
