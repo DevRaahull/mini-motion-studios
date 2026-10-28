@@ -1158,7 +1158,10 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="#ffffff"><polygon points="6,3 20,12 6,21"/></svg>
       </div>
       <div class="brand-title-wrap">
-        <span class="brand-main-title">Mini Motion Studios</span>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="brand-main-title">Mini Motion Studios</span>
+          <span style="font-family:var(--font-mono); font-size:9.5px; font-weight:700; color:#ff2a3b; background:rgba(229,9,20,0.18); border:1px solid rgba(229,9,20,0.35); padding:2px 8px; border-radius:12px; letter-spacing:1px;">BY RAHUL SONI</span>
+        </div>
         <div class="brand-breadcrumbs">
           AI FILMS <span>/</span> ANIME <span>/</span> STORYTELLING <span>/</span> VISUAL EXPERIMENTS
         </div>
@@ -1166,6 +1169,10 @@
     </a>
 
     <div class="header-right-actions">
+      <a href="public/Rahul_Soni_AI_Video_Creator_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-glass" style="padding:7px 16px; font-size:12px; text-decoration:none;" title="Download AI Creator Resume">
+        <span>📄 Resume</span>
+      </a>
+
       <div class="status-collab-badge">
         <span class="status-dot-pulse"></span>
         <span>Available for Collaborations</span>
@@ -1215,7 +1222,11 @@
     <!-- HERO SECTION -->
     <section id="hero">
       <div class="hero-content">
-        <span class="hero-category-tag">AI CREATIVE STUDIO</span>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+          <span class="hero-category-tag" style="margin-bottom:0;">AI CREATIVE STUDIO</span>
+          <span style="color:rgba(255,255,255,0.25);">|</span>
+          <span style="font-family:var(--font-mono); font-size:10.5px; color:#ff2a3b; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;">DIRECTED BY RAHUL SONI</span>
+        </div>
         
         <h1 class="hero-headline">
           Mini Motion<br>
@@ -1225,18 +1236,37 @@
         <div class="hero-tagline">IMAGINATION × AI × CINEMA</div>
 
         <p class="hero-desc">
-          A creative studio by Rahul Soni, exploring the power of AI to tell emotionally powerful stories, cinematic visuals, and anime-style narratives.
+          Cinematic AI visual storytelling, dark psychology anime narratives, and emotionally compelling digital cinema directed by <strong style="color:#ffffff; font-weight:700; border-bottom:2px solid #ff2a3b; padding-bottom:1px;">Rahul Soni</strong>.
         </p>
 
-        <div class="hero-actions-row">
+        <div class="hero-actions-row" style="flex-wrap:wrap; gap:12px;">
           <a href="#films" class="btn-crimson">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
             <span>Explore My Films</span>
           </a>
 
-          <a href="#process" class="btn-glass">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
-            <span>See the Process</span>
+          <a href="public/Rahul_Soni_AI_Video_Creator_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-glass" style="border-color:rgba(229,9,20,0.4); background:rgba(229,9,20,0.1); color:#ffffff; font-weight:600;">
+            <span>📄 View AI Resume</span>
+          </a>
+
+          <button id="hero-collab-trigger" class="btn-glass" style="cursor:pointer;">
+            <span>📞 Contact &amp; Collab</span>
+          </button>
+        </div>
+
+        <!-- Quick Channels & Phone Bar -->
+        <div style="display:flex; align-items:center; gap:10px; margin-top:22px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.08); flex-wrap:wrap;">
+          <span style="font-family:var(--font-mono); font-size:10.5px; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase;">CHANNELS:</span>
+          <a href="https://www.youtube.com/@minimotionstudioss" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); padding:4px 12px; border-radius:20px; color:#cbd5e1; font-size:11.5px; text-decoration:none;">
+            <span style="width:6px; height:6px; border-radius:50%; background:#ff2a3b;"></span>
+            <span>English Channel ↗</span>
+          </a>
+          <a href="https://www.youtube.com/@MiniMotionStudiosHindi" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); padding:4px 12px; border-radius:20px; color:#cbd5e1; font-size:11.5px; text-decoration:none;">
+            <span style="width:6px; height:6px; border-radius:50%; background:#f59e0b;"></span>
+            <span>Hindi Channel ↗</span>
+          </a>
+          <a href="tel:+917073660571" style="display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); padding:4px 12px; border-radius:20px; color:#ffffff; font-size:11.5px; text-decoration:none;">
+            <span>📞 +91 70736 60571</span>
           </a>
         </div>
       </div>
@@ -1585,20 +1615,32 @@
         </div>
       </div>
 
-      <!-- 3. Studio by Rahul Soni -->
+      <!-- 3. Studio Profile (Rahul Soni) -->
       <div class="dash-panel" id="about">
         <div class="creator-card-content">
           <div class="creator-avatar-wrap">
             <img src="assets/creator_rahul.png" alt="Rahul Soni - AI Filmmaker &amp; Visual Storyteller" />
           </div>
           <div class="creator-info">
-            <h4>Studio by Rahul Soni</h4>
-            <span class="creator-title">AI Video Creator · Storyteller · Editor</span>
+            <span style="font-family:var(--font-mono); font-size:10.5px; font-weight:700; color:var(--text-muted); letter-spacing:1.5px; text-transform:uppercase; display:block; margin-bottom:4px;">STUDIO FOUNDER &amp; LEAD DIRECTOR</span>
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:2px; flex-wrap:wrap;">
+              <h4 style="font-size:22px; margin:0; color:#ffffff; font-weight:800; background:linear-gradient(135deg, #ffffff 40%, #ff4b5a 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Rahul Soni</h4>
+              <span style="font-family:var(--font-mono); font-size:9.5px; font-weight:700; color:#ff2a3b; background:rgba(229,9,20,0.18); border:1px solid rgba(229,9,20,0.35); padding:2px 8px; border-radius:10px;">AI FILMMAKER</span>
+            </div>
+            <span class="creator-title">AI Video Creator · Prompt Specialist · Video Editor</span>
             <p>
-              I create AI-powered cinematic stories, anime narratives, and thought-provoking visuals that explore human psychology, power, and behavior.
+              Specializing in dark psychology storytelling, hyper-realistic anime cinema, and high-retention video production. Directing both English and Hindi storytelling channels.
             </p>
-            <a href="https://instagram.com/reality._exe" target="_blank" rel="noopener noreferrer" class="creator-link">
-              <span>Know More About Me</span>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
+              <a href="tel:+917073660571" style="font-size:12px; color:#ffffff; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); padding:5px 12px; border-radius:8px; text-decoration:none;">
+                <span>📞 +91 70736 60571</span>
+              </a>
+              <a href="public/Rahul_Soni_AI_Video_Creator_Resume.pdf" target="_blank" rel="noopener noreferrer" style="font-size:12px; color:#ff2a3b; background:rgba(229,9,20,0.12); border:1px solid rgba(229,9,20,0.3); padding:5px 12px; border-radius:8px; font-weight:600; text-decoration:none;">
+                <span>📄 AI Creator Resume (PDF) ↗</span>
+              </a>
+            </div>
+            <a href="https://www.youtube.com/@minimotionstudioss" target="_blank" rel="noopener noreferrer" class="creator-link">
+              <span>Visit English YouTube Channel</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </a>
           </div>
@@ -1616,14 +1658,32 @@
       </div>
 
       <div class="stats-items-cluster">
-        <!-- YouTube -->
+        <!-- English Channel -->
         <a href="https://www.youtube.com/@minimotionstudioss" target="_blank" rel="noopener noreferrer" class="stat-pill-item">
           <div class="stat-pill-icon">
             <svg width="20" height="20" fill="#e50914" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
           </div>
           <div class="stat-pill-text">
             <span class="stat-pill-number">200+</span>
-            <span class="stat-pill-label">YouTube Subscribers</span>
+            <span class="stat-pill-label">English Channel Subs</span>
+          </div>
+        </a>
+
+        <!-- Hindi Channel -->
+        <a href="https://www.youtube.com/@MiniMotionStudiosHindi" target="_blank" rel="noopener noreferrer" class="stat-pill-item">
+          <div class="stat-pill-icon" style="color:#f59e0b; font-size:18px;">🎬</div>
+          <div class="stat-pill-text">
+            <span class="stat-pill-number">Hindi Studio</span>
+            <span class="stat-pill-label">@MiniMotionStudiosHindi</span>
+          </div>
+        </a>
+
+        <!-- Direct Phone -->
+        <a href="tel:+917073660571" class="stat-pill-item">
+          <div class="stat-pill-icon" style="color:#10b981; font-size:18px;">📞</div>
+          <div class="stat-pill-text">
+            <span class="stat-pill-number">+91 70736 60571</span>
+            <span class="stat-pill-label">Direct Reach / WhatsApp</span>
           </div>
         </a>
 
@@ -1700,9 +1760,58 @@
       <p>Have a commercial project, dark psychology anime series, or AI video campaign in mind? Reach out directly.</p>
 
       <div class="collab-channels-list">
-        <a href="mailto:raahulsoni.2112@gmail.com?subject=Collaboration%20with%20Mini%20Motion%20Studios" class="collab-item">
+        <!-- Resume Card -->
+        <a href="public/Rahul_Soni_AI_Video_Creator_Resume.pdf" target="_blank" rel="noopener noreferrer" class="collab-item" style="background:rgba(229,9,20,0.14); border:1px solid rgba(229,9,20,0.4);">
           <div style="display:flex; align-items:center; gap:12px;">
-            <span>✉️</span>
+            <span style="font-size:22px;">📄</span>
+            <div>
+              <div style="font-weight:700; font-size:13.5px; color:#ffffff;">Official AI Video Creator Resume</div>
+              <div style="font-size:11px; color:#ff2a3b; font-family:var(--font-mono);">Rahul Soni Curriculum Vitae</div>
+            </div>
+          </div>
+          <span style="background:#e50914; color:#ffffff; padding:4px 10px; border-radius:6px; font-size:11px; font-weight:700;">Download ↗</span>
+        </a>
+
+        <!-- Phone / WhatsApp -->
+        <a href="tel:+917073660571" class="collab-item">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span style="font-size:20px;">📞</span>
+            <div>
+              <div style="font-weight:600; font-size:13.5px;">Direct Phone / WhatsApp</div>
+              <div style="font-size:11.5px; color:var(--text-muted)">+91 70736 60571</div>
+            </div>
+          </div>
+          <span>➔</span>
+        </a>
+
+        <!-- Hindi Channel -->
+        <a href="https://www.youtube.com/@MiniMotionStudiosHindi" target="_blank" rel="noopener noreferrer" class="collab-item">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span style="font-size:20px;">🎬</span>
+            <div>
+              <div style="font-weight:600; font-size:13.5px;">YouTube (Hindi Channel)</div>
+              <div style="font-size:11.5px; color:#f59e0b;">@MiniMotionStudiosHindi</div>
+            </div>
+          </div>
+          <span>➔</span>
+        </a>
+
+        <!-- English Channel -->
+        <a href="https://www.youtube.com/@minimotionstudioss" target="_blank" rel="noopener noreferrer" class="collab-item">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span style="font-size:20px;">▶</span>
+            <div>
+              <div style="font-weight:600; font-size:13.5px;">YouTube (English Channel)</div>
+              <div style="font-size:11.5px; color:#ff2a3b;">Mini Motion Studios (200+ Subs)</div>
+            </div>
+          </div>
+          <span>➔</span>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:raahulsoni.2112@gmail.com?subject=Collaboration%20with%20Mini%20Motion%20Studios%20-%20Rahul%20Soni" class="collab-item">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span style="font-size:20px;">✉️</span>
             <div>
               <div style="font-weight:600; font-size:13.5px;">Email Directly</div>
               <div style="font-size:11.5px; color:var(--text-muted)">raahulsoni.2112@gmail.com</div>
@@ -1711,23 +1820,13 @@
           <span>➔</span>
         </a>
 
+        <!-- Instagram -->
         <a href="https://instagram.com/reality._exe" target="_blank" rel="noopener noreferrer" class="collab-item">
           <div style="display:flex; align-items:center; gap:12px;">
-            <span>📸</span>
+            <span style="font-size:20px;">📸</span>
             <div>
               <div style="font-weight:600; font-size:13.5px;">Instagram DM</div>
               <div style="font-size:11.5px; color:var(--text-muted)">@reality._exe</div>
-            </div>
-          </div>
-          <span>➔</span>
-        </a>
-
-        <a href="tel:+917073660571" class="collab-item">
-          <div style="display:flex; align-items:center; gap:12px;">
-            <span>📞</span>
-            <div>
-              <div style="font-weight:600; font-size:13.5px;">Phone / WhatsApp</div>
-              <div style="font-size:11.5px; color:var(--text-muted)">+91 70736 60571</div>
             </div>
           </div>
           <span>➔</span>
@@ -1840,6 +1939,13 @@
       const openCollabBtn = document.getElementById('open-collab-btn');
       const closeCollabBtn = document.getElementById('close-collab');
 
+      const heroCollabBtn = document.getElementById('hero-collab-trigger');
+      if (heroCollabBtn) {
+        heroCollabBtn.addEventListener('click', () => {
+          collabModal.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        });
+      }
       if (openCollabBtn) {
         openCollabBtn.addEventListener('click', () => {
           collabModal.classList.add('open');

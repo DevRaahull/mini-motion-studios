@@ -170,9 +170,14 @@ export default function Home() {
             </svg>
           </div>
           <div className="flex flex-col">
-            <span className="font-cinematic text-sm font-extrabold tracking-[2px] text-white">
-              MINI MOTION STUDIOS
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="font-cinematic text-sm font-extrabold tracking-[2px] text-white">
+                MINI MOTION STUDIOS
+              </span>
+              <span className="hidden md:inline-flex text-[9px] font-mono-tag font-bold px-1.5 py-0.5 rounded bg-[#e50914]/20 text-[#ff2a3b] border border-[#e50914]/40">
+                BY RAHUL SONI
+              </span>
+            </div>
             <span className="hidden sm:inline font-mono-tag text-[9px] tracking-[1.5px] text-[#5c6677]">
               AI FILMS / ANIME / STORYTELLING / VISUAL EXPERIMENTS
             </span>
@@ -180,6 +185,16 @@ export default function Home() {
         </a>
 
         <div className="flex items-center gap-3">
+          <a
+            href="/Rahul_Soni_AI_Video_Creator_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex items-center gap-1.5 text-xs text-white/90 bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-1.5 rounded-full transition-all no-underline"
+            title="Download AI Video Creator Resume"
+          >
+            <span>📄 Resume</span>
+          </a>
+
           <div className="hidden md:flex items-center gap-2 bg-[rgba(15,17,24,0.8)] border border-white/10 px-3 py-1.5 rounded-full text-xs font-medium text-[#94a3b8]">
             <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]" />
             <span>Available for Collaborations</span>
@@ -249,7 +264,14 @@ export default function Home() {
         {/* HERO SECTION */}
         <section id="hero">
           <div className="hero-content">
-            <span className="hero-category-tag">AI CREATIVE STUDIO</span>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="hero-category-tag mb-0">AI CREATIVE STUDIO</span>
+              <span className="text-white/20">|</span>
+              <span className="font-mono-tag text-[10px] tracking-[1.5px] text-[#ff2a3b] font-bold uppercase">
+                DIRECTED BY RAHUL SONI
+              </span>
+            </div>
+
             <h1 className="hero-headline">
               Mini Motion
               <br />
@@ -257,25 +279,63 @@ export default function Home() {
             </h1>
             <div className="hero-tagline">IMAGINATION × AI × CINEMA</div>
             <p className="hero-desc">
-              A creative studio by Rahul Soni exploring AI-powered cinematic
-              visuals, anime storytelling, dark psychology, and emotionally
-              compelling narratives.
+              Cinematic AI visual storytelling, dark psychology anime narratives, and emotionally compelling digital cinema directed by <strong className="text-white font-bold underline decoration-[#ff2a3b] decoration-2 underline-offset-4">Rahul Soni</strong>.
             </p>
-            <div className="hero-actions-row">
+            <div className="hero-actions-row flex items-center gap-3 flex-wrap">
               <a href="#films" className="btn-crimson">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                   <polygon points="5,3 19,12 5,21" />
                 </svg>
                 <span>Explore My Films</span>
               </a>
-              <a href="#process" className="btn-glass">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="3" y="3" width="7" height="7" />
-                  <rect x="14" y="3" width="7" height="7" />
-                  <rect x="14" y="14" width="7" height="7" />
-                  <rect x="3" y="14" width="7" height="7" />
+              <a
+                href="/Rahul_Soni_AI_Video_Creator_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-resume"
+              >
+                <span>📄 View AI Resume</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" />
                 </svg>
-                <span>See the Process</span>
+              </a>
+              <button
+                onClick={() => setIsCollabOpen(true)}
+                className="btn-glass"
+              >
+                <span>📞 Contact &amp; Collab</span>
+              </button>
+            </div>
+
+            {/* QUICK CHANNELS & PHONE BAR */}
+            <div className="flex items-center gap-2.5 mt-5 pt-3.5 border-t border-white/10 flex-wrap">
+              <span className="text-[10.5px] text-[#94a3b8] font-mono-tag uppercase tracking-wider">CHANNELS:</span>
+              <a
+                href="https://www.youtube.com/@minimotionstudioss"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="channel-pill-tag"
+                title="Mini Motion Studios (English Channel)"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-[#ff2a3b]"></span>
+                <span>English Channel ↗</span>
+              </a>
+              <a
+                href="https://www.youtube.com/@MiniMotionStudiosHindi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="channel-pill-tag"
+                title="Mini Motion Studios (Hindi Channel)"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                <span>Hindi Channel ↗</span>
+              </a>
+              <a
+                href="tel:+917073660571"
+                className="channel-pill-tag text-white hover:text-[#ff2a3b]"
+                title="Call Rahul Soni Directly"
+              >
+                <span>📞 +91 70736 60571</span>
               </a>
             </div>
           </div>
@@ -429,24 +489,46 @@ export default function Home() {
               </div>
               <div className="creator-info flex-1">
                 <span className="text-[11px] font-bold uppercase tracking-[1.5px] text-[#94a3b8] block mb-1">
-                  STUDIO BY
+                  STUDIO FOUNDER &amp; LEAD DIRECTOR
                 </span>
-                <h4 className="text-xl font-serif-title font-bold text-white mb-1">
-                  Rahul Soni
-                </h4>
+                <div className="flex items-center gap-2 mb-1 flex-wrap">
+                  <h4 className="text-2xl font-serif-title font-extrabold text-white tracking-tight">
+                    <span className="name-gradient">Rahul Soni</span>
+                  </h4>
+                  <span className="creator-highlight-badge">AI FILMMAKER</span>
+                </div>
                 <span className="creator-title">
-                  AI Video Creator · Storyteller · Editor
+                  AI Video Creator · Prompt Specialist · Video Editor
                 </span>
                 <p>
-                  I create AI-powered cinematic stories, anime narratives, and
-                  thought-provoking visuals that explore human psychology,
-                  power, and behavior.
+                  Specializing in dark psychology storytelling, hyper-realistic anime cinema, and high-retention video production. Directing both English and Hindi storytelling channels.
                 </p>
+
+                {/* Direct Contact & Resume links */}
+                <div className="flex items-center gap-2.5 mt-3 mb-4 flex-wrap">
+                  <a
+                    href="tel:+917073660571"
+                    className="text-xs text-white/90 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg flex items-center gap-1.5 hover:border-[#e50914] transition-all no-underline"
+                    title="Direct Phone Call"
+                  >
+                    <span>📞 +91 70736 60571</span>
+                  </a>
+                  <a
+                    href="/Rahul_Soni_AI_Video_Creator_Resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-[#ff2a3b] bg-[#e50914]/10 border border-[#e50914]/30 px-3 py-1.5 rounded-lg flex items-center gap-1.5 hover:bg-[#e50914]/20 transition-all font-semibold no-underline"
+                    title="Download Rahul Soni AI Video Creator Resume"
+                  >
+                    <span>📄 AI Creator Resume (PDF) ↗</span>
+                  </a>
+                </div>
+
                 <button
                   onClick={() => setIsCollabOpen(true)}
                   className="creator-link cursor-pointer bg-transparent border-none p-0"
                 >
-                  <span>Know More About Me</span>
+                  <span>Connect With Rahul Soni Directly</span>
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M7 17L17 7M17 7H7M17 7V17" />
                   </svg>
@@ -460,7 +542,7 @@ export default function Home() {
         <div className="stats-footer-strip">
           <div className="laurel-stat-badge">
             <span className="text-xl">🏆</span>
-            <span>AI Storytelling &amp; Visual Experiments</span>
+            <span>Mini Motion Studios by Rahul Soni</span>
           </div>
 
           <div className="stats-items-cluster">
@@ -473,7 +555,32 @@ export default function Home() {
               <div className="stat-pill-icon text-lg">▶</div>
               <div className="stat-pill-text">
                 <span className="stat-pill-number">200+</span>
-                <span className="stat-pill-label">YouTube Subscribers</span>
+                <span className="stat-pill-label">English Channel Subs</span>
+              </div>
+            </a>
+
+            <a
+              href="https://www.youtube.com/@MiniMotionStudiosHindi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="stat-pill-item"
+            >
+              <div className="stat-pill-icon text-lg text-amber-400">🎬</div>
+              <div className="stat-pill-text">
+                <span className="stat-pill-number">Hindi Studio</span>
+                <span className="stat-pill-label">@MiniMotionStudiosHindi</span>
+              </div>
+            </a>
+
+            <a
+              href="tel:+917073660571"
+              className="stat-pill-item"
+              title="Call Rahul Soni"
+            >
+              <div className="stat-pill-icon text-lg text-emerald-400">📞</div>
+              <div className="stat-pill-text">
+                <span className="stat-pill-number">+91 70736 60571</span>
+                <span className="stat-pill-label">Direct Contact / WhatsApp</span>
               </div>
             </a>
 
@@ -489,22 +596,6 @@ export default function Home() {
                 <span className="stat-pill-label">Instagram Channel</span>
               </div>
             </a>
-
-            <div className="stat-pill-item">
-              <div className="stat-pill-icon text-lg">🎬</div>
-              <div className="stat-pill-text">
-                <span className="stat-pill-number">50+</span>
-                <span className="stat-pill-label">Video Projects</span>
-              </div>
-            </div>
-
-            <div className="stat-pill-item">
-              <div className="stat-pill-icon text-lg">📚</div>
-              <div className="stat-pill-text">
-                <span className="stat-pill-number">4+</span>
-                <span className="stat-pill-label">Content Series</span>
-              </div>
-            </div>
           </div>
         </div>
       </main>
@@ -610,24 +701,96 @@ export default function Home() {
               Let&apos;s Create Cinema
             </h3>
             <p className="text-[#94a3b8] text-[13.5px] leading-relaxed mb-6">
-              Have a commercial project, dark psychology anime series, or AI video campaign in mind? Reach out directly.
+              Connect with <strong className="text-white">Rahul Soni</strong> for AI film directing, dark psychology anime series, prompt engineering, or commercial campaigns.
             </p>
 
             <div className="flex flex-col gap-3">
+              {/* RESUME CARD */}
               <a
-                href="mailto:raahulsoni.2112@gmail.com?subject=Collaboration%20with%20Mini%20Motion%20Studios"
+                href="/Rahul_Soni_AI_Video_Creator_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between p-3.5 bg-gradient-to-r from-[#e50914]/20 via-[#e50914]/10 to-transparent border border-[#e50914]/50 rounded-xl text-white no-underline hover:border-[#ff2a3b] transition-all"
+                title="Download Official AI Video Creator Resume"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">📄</span>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] text-[#ff2a3b] font-mono-tag font-bold tracking-wider">OFFICIAL CURRICULUM VITAE</span>
+                    <span className="text-sm font-bold">Rahul Soni – AI Video Creator Resume</span>
+                  </div>
+                </div>
+                <span className="text-xs text-white bg-[#e50914] px-3 py-1.5 rounded-lg font-semibold shadow-[0_0_12px_rgba(229,9,20,0.5)]">Download PDF ↗</span>
+              </a>
+
+              {/* DIRECT CALL / WHATSAPP */}
+              <a
+                href="tel:+917073660571"
+                className="flex items-center justify-between p-3.5 bg-white/[0.04] border border-white/10 rounded-xl text-white no-underline hover:border-[#e50914] hover:bg-[#e50914]/10 transition-all"
+                title="Call or WhatsApp Rahul Soni"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-xl">📞</span>
+                  <div className="flex flex-col">
+                    <span className="text-[11px] text-[#94a3b8] font-mono-tag">DIRECT PHONE / WHATSAPP</span>
+                    <span className="text-sm font-semibold">+91 70736 60571</span>
+                  </div>
+                </div>
+                <span className="text-xs text-[#ff2a3b] font-medium">Call / Chat ↗</span>
+              </a>
+
+              {/* EMAIL */}
+              <a
+                href="mailto:raahulsoni.2112@gmail.com?subject=Collaboration%20with%20Mini%20Motion%20Studios%20-%20Rahul%20Soni"
                 className="flex items-center justify-between p-3.5 bg-white/[0.04] border border-white/10 rounded-xl text-white no-underline hover:border-[#e50914] hover:bg-[#e50914]/10 transition-all"
               >
                 <div className="flex items-center gap-3">
                   <span className="text-xl">✉️</span>
                   <div className="flex flex-col">
-                    <span className="text-[11px] text-[#94a3b8] font-mono-tag">EMAIL</span>
+                    <span className="text-[11px] text-[#94a3b8] font-mono-tag">STUDIO EMAIL</span>
                     <span className="text-sm font-semibold">raahulsoni.2112@gmail.com</span>
                   </div>
                 </div>
                 <span className="text-xs text-[#ff2a3b] font-medium">Send Email ↗</span>
               </a>
 
+              {/* HINDI YOUTUBE CHANNEL */}
+              <a
+                href="https://www.youtube.com/@MiniMotionStudiosHindi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between p-3.5 bg-white/[0.04] border border-white/10 rounded-xl text-white no-underline hover:border-[#e50914] hover:bg-[#e50914]/10 transition-all"
+                title="Mini Motion Studios Hindi Channel"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-xl">🎬</span>
+                  <div className="flex flex-col">
+                    <span className="text-[11px] text-amber-400 font-mono-tag font-bold">YOUTUBE (HINDI CHANNEL)</span>
+                    <span className="text-sm font-semibold">@MiniMotionStudiosHindi</span>
+                  </div>
+                </div>
+                <span className="text-xs text-[#ff2a3b] font-medium">Subscribe ↗</span>
+              </a>
+
+              {/* ENGLISH YOUTUBE CHANNEL */}
+              <a
+                href="https://www.youtube.com/@minimotionstudioss"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between p-3.5 bg-white/[0.04] border border-white/10 rounded-xl text-white no-underline hover:border-[#e50914] hover:bg-[#e50914]/10 transition-all"
+                title="Mini Motion Studios English Channel"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-xl">▶</span>
+                  <div className="flex flex-col">
+                    <span className="text-[11px] text-[#ff2a3b] font-mono-tag font-bold">YOUTUBE (ENGLISH CHANNEL)</span>
+                    <span className="text-sm font-semibold">Mini Motion Studios (200+ Subs)</span>
+                  </div>
+                </div>
+                <span className="text-xs text-[#ff2a3b] font-medium">Subscribe ↗</span>
+              </a>
+
+              {/* INSTAGRAM */}
               <a
                 href="https://instagram.com/reality._exe"
                 target="_blank"
@@ -642,22 +805,6 @@ export default function Home() {
                   </div>
                 </div>
                 <span className="text-xs text-[#ff2a3b] font-medium">Message ↗</span>
-              </a>
-
-              <a
-                href="https://www.youtube.com/@minimotionstudioss"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between p-3.5 bg-white/[0.04] border border-white/10 rounded-xl text-white no-underline hover:border-[#e50914] hover:bg-[#e50914]/10 transition-all"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="text-xl">▶</span>
-                  <div className="flex flex-col">
-                    <span className="text-[11px] text-[#94a3b8] font-mono-tag">YOUTUBE (ENGLISH)</span>
-                    <span className="text-sm font-semibold">Mini Motion Studios</span>
-                  </div>
-                </div>
-                <span className="text-xs text-[#ff2a3b] font-medium">Subscribe ↗</span>
               </a>
 
               <button
