@@ -154,10 +154,9 @@ export default function Home() {
       {/* TOP HEADER */}
       <header className="site-header">
         <a href="#hero" className="flex items-center gap-3 no-underline">
-          <div className="w-8 h-8 rounded-full bg-[#e50914] flex items-center justify-center shadow-[0_0_15px_rgba(229,9,20,0.6)]">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="#ffffff">
-              <polygon points="6,3 20,12 6,21" />
-            </svg>
+          <div className="w-9 h-9 rounded-lg overflow-hidden border border-[#ff2a3b]/50 shadow-[0_0_15px_rgba(229,9,20,0.5)] flex items-center justify-center bg-black/90 group-hover:scale-105 group-hover:border-[#ff2a3b] transition-all">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/mms_logo_emblem.png" alt="Mini Motion Studios Emblem" className="w-full h-full object-contain p-0.5" />
           </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
@@ -254,7 +253,11 @@ export default function Home() {
         {/* HERO SECTION */}
         <section id="hero">
           <div className="hero-content">
-            <div className="flex items-center gap-2 mb-3">
+            <div className="flex items-center gap-2.5 mb-3 flex-wrap">
+              <div className="w-7 h-7 rounded-md overflow-hidden border border-[#ff2a3b]/60 shadow-[0_0_10px_rgba(229,9,20,0.6)] bg-black/80 flex items-center justify-center">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/assets/mms_logo_emblem.png" alt="MMS Emblem" className="w-full h-full object-contain p-0.5" />
+              </div>
               <span className="hero-category-tag mb-0">AI CREATIVE STUDIO</span>
               <span className="text-white/20">|</span>
               <span className="font-mono-tag text-[10px] tracking-[1.5px] text-[#ff2a3b] font-bold uppercase">
@@ -336,6 +339,58 @@ export default function Home() {
               src="/assets/hero_anime_blended.png"
               alt="Anime Protagonist overlooking moonlit fortress with cinema clapperboard"
             />
+          </div>
+        </section>
+
+                {/* STUDIO UNIVERSE & BRAND IDENTITY SHOWCASE */}
+        <section id="studio" className="pt-14 pb-4">
+          <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#0d0f15] shadow-[0_15px_50px_rgba(0,0,0,0.85)] group">
+            <div className="relative aspect-[16/9] md:aspect-[21/9] w-full overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/mms_brand_universe.jpg"
+                alt="Mini Motion Studios Official Cinema Universe & Dark Psychology Artwork"
+                className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/40 pointer-events-none" />
+
+              {/* Top Studio Badge */}
+              <div className="absolute top-4 left-4 flex items-center gap-2.5 bg-black/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 shadow-[0_4px_20px_rgba(0,0,0,0.6)]">
+                <span className="w-2 h-2 rounded-full bg-[#ff2a3b] shadow-[0_0_10px_#ff2a3b] animate-pulse"></span>
+                <span className="font-mono-tag text-[10px] md:text-[11px] tracking-[1.5px] text-white font-extrabold uppercase">
+                  OFFICIAL STUDIO UNIVERSE &bull; MINI MOTION STUDIOS
+                </span>
+              </div>
+
+              {/* Bottom Info Bar */}
+              <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between flex-wrap gap-3">
+                <div className="max-w-xl">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[11px] font-mono-tag uppercase tracking-[2px] text-[#ff2a3b] font-bold">
+                      THE PHILOSOPHY
+                    </span>
+                  </div>
+                  <h3 className="font-cinematic text-lg md:text-2xl font-black text-white tracking-[2px] uppercase drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
+                    Stories That Stay With You
+                  </h3>
+                  <p className="text-xs text-[#94a3b8] mt-1 hidden sm:block leading-relaxed">
+                    Dark Psychology &bull; Crime &bull; Mystery &bull; Reality &bull; Human Mind &bull; High-Retention Vertical Micro-Dramas
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2.5">
+                  <a
+                    href="https://www.youtube.com/@minimotionstudioss"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-crimson text-xs py-2 px-3.5 whitespace-nowrap"
+                  >
+                    <span>Visit Studio Channel</span>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -490,11 +545,16 @@ export default function Home() {
                 <span className="text-[11px] font-bold uppercase tracking-[1.5px] text-[#94a3b8] block mb-1">
                   STUDIO FOUNDER &amp; LEAD DIRECTOR
                 </span>
-                <div className="flex items-center gap-2 mb-1 flex-wrap">
+                <div className="flex items-center gap-2.5 mb-1 flex-wrap">
                   <h4 className="text-2xl font-serif-title font-extrabold text-white tracking-tight">
                     <span className="name-gradient">Rahul Soni</span>
                   </h4>
                   <span className="creator-highlight-badge">AI FILMMAKER</span>
+                  <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-black/60 border border-[#ff2a3b]/40 text-[10.5px] font-mono-tag text-white">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/assets/mms_logo_emblem.png" alt="MMS" className="w-3.5 h-3.5 object-cover rounded-sm" />
+                    <span>MINI MOTION ORIGINALS</span>
+                  </div>
                 </div>
                 <span className="creator-title">
                   AI Filmmaker · Micro-Drama Showrunner · Lead Director
