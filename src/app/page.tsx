@@ -154,10 +154,12 @@ export default function Home() {
       {/* TOP HEADER */}
       <header className="site-header">
         <a href="#hero" className="flex items-center gap-3 no-underline">
-          <div className="w-9 h-9 rounded-lg overflow-hidden border border-[#ff2a3b]/50 shadow-[0_0_15px_rgba(229,9,20,0.5)] flex items-center justify-center bg-black/90 group-hover:scale-105 group-hover:border-[#ff2a3b] transition-all">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/mms_logo_emblem.png" alt="Mini Motion Studios Emblem" className="w-full h-full object-contain p-0.5" />
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/mms_logo_emblem.png"
+            alt="Mini Motion Studios Emblem"
+            className="h-9 w-auto object-contain transition-transform group-hover:scale-105 flex-shrink-0"
+          />
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
               <span className="font-cinematic text-sm font-extrabold tracking-[2px] text-white">
@@ -254,10 +256,12 @@ export default function Home() {
         <section id="hero">
           <div className="hero-content">
             <div className="flex items-center gap-2.5 mb-3 flex-wrap">
-              <div className="w-7 h-7 rounded-md overflow-hidden border border-[#ff2a3b]/60 shadow-[0_0_10px_rgba(229,9,20,0.6)] bg-black/80 flex items-center justify-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/assets/mms_logo_emblem.png" alt="MMS Emblem" className="w-full h-full object-contain p-0.5" />
-              </div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/mms_logo_emblem.png"
+                alt="Mini Motion Studios Emblem"
+                className="h-6 w-auto object-contain flex-shrink-0"
+              />
               <span className="hero-category-tag mb-0">AI CREATIVE STUDIO</span>
               <span className="text-white/20">|</span>
               <span className="font-mono-tag text-[10px] tracking-[1.5px] text-[#ff2a3b] font-bold uppercase">
