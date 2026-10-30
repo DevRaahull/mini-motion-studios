@@ -113,14 +113,18 @@ const PROCESS_STEPS = [
 ];
 
 const TOOLS = [
-  { name: "Google Flow", icon: "FD" },
-  { name: "ChatGPT", icon: "🧠" },
-  { name: "Gemini", icon: "✦" },
-  { name: "Claude", icon: "☀️" },
-  { name: "ElevenLabs", icon: "II" },
-  { name: "DaVinci", icon: "⚙️" },
-  { name: "CapCut", icon: "✂️" },
-  { name: "Photoshop", icon: "Ps" },
+  { name: "Google Flow", icon: "FD", color: "#ef4444" },
+  { name: "Nano Banana", icon: "🍌", color: "#fbbf24" },
+  { name: "NotebookLM", icon: "📓", color: "#a78bfa" },
+  { name: "Gemini", icon: "✦", color: "#38bdf8" },
+  { name: "ChatGPT", icon: "🧠", color: "#10b981" },
+  { name: "Claude", icon: "☀️", color: "#f59e0b" },
+  { name: "Runway", icon: "R3", color: "#f43f5e" },
+  { name: "Kling AI", icon: "KL", color: "#ec4899" },
+  { name: "ElevenLabs", icon: "II", color: "#ffffff" },
+  { name: "DaVinci", icon: "⚙️", color: "#ffffff" },
+  { name: "CapCut", icon: "✂️", color: "#ffffff" },
+  { name: "Photoshop", icon: "Ps", color: "#38bdf8" },
 ];
 
 export default function Home() {
@@ -531,7 +535,7 @@ export default function Home() {
             <div className="tools-grid-icons">
               {TOOLS.map((t, idx) => (
                 <div key={idx} className="tool-tile">
-                  <div className="tool-icon-img">{t.icon}</div>
+                  <div className="tool-icon-img" style={{ color: t.color }}>{t.icon}</div>
                   <span className="tool-tile-name">{t.name}</span>
                 </div>
               ))}
