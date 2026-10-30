@@ -7,7 +7,7 @@ interface FilmProject {
   youtubeId?: string;
   videoSrc?: string;
   title: string;
-  category: "hindi-drama" | "psychology" | "anime" | "experiments" | "commercial";
+  category: "micro-drama" | "hindi-drama" | "psychology" | "anime" | "experiments" | "commercial";
   categoryLabel: string;
   dotColor: "red" | "gold" | "purple" | "blue" | "emerald";
   duration: string;
@@ -17,6 +17,18 @@ interface FilmProject {
 }
 
 const FILMS: FilmProject[] = [
+  {
+    id: "alphas-fated-mate-ep1",
+    title: "The Alpha's Fated Mate: The Golden Eyes (Ep. 1)",
+    category: "micro-drama",
+    categoryLabel: "AI Micro-Drama Series",
+    dotColor: "red",
+    duration: "01:04",
+    desc: "Studio-level hyper-realistic fantasy micro-drama (9:16 vertical). Ellie Rowan, a broke diner waitress hiding molten gold eyes every full moon, encounters Gideon Thorne, Alpha of Blackpine pack.",
+    img: "/assets/real_thumbs/card_alphas_mate.jpg",
+    videoSrc: "/videos/alphas_fated_mate_ep1.mp4",
+    watchUrl: "https://www.youtube.com/@minimotionstudioss",
+  },
   {
     id: "badnaam-ep1",
     title: "Badnaam De Luca: Lucas Ka Sach (Ep. 1)",
@@ -40,6 +52,18 @@ const FILMS: FilmProject[] = [
     img: "/assets/real_thumbs/card_badnaam_ep2.jpg",
     videoSrc: "/videos/badnaam_de_luca_ep2.mp4",
     watchUrl: "https://www.youtube.com/@MiniMotionStudiosHindi",
+  },
+  {
+    id: "rival-crumbles",
+    youtubeId: "kDHCSV1El3A",
+    title: "The Architect: I Destroyed a Corporate Rival – Then Regretted It",
+    category: "anime",
+    categoryLabel: "Flagship AI Series (The Architect)",
+    dotColor: "gold",
+    duration: "03:42",
+    desc: "A flagship cinematic production exploring corporate power dynamics, ruthless tactical retaliation, and the heavy psychological void left when victory arrives.",
+    img: "/assets/real_thumbs/kDHCSV1El3A.jpg",
+    watchUrl: "https://www.youtube.com/watch?v=kDHCSV1El3A",
   },
   {
     id: "respect-list",
@@ -78,30 +102,6 @@ const FILMS: FilmProject[] = [
     videoSrc: "/videos/manipulation_signs.mp4",
     watchUrl: "https://www.youtube.com/@minimotionstudioss",
   },
-  {
-    id: "stranger-secret",
-    title: "I Made a Stranger Tell Me Their Deepest Secret",
-    category: "experiments",
-    categoryLabel: "Psychological Rapport Experiment",
-    dotColor: "blue",
-    duration: "00:55",
-    desc: "The vulnerability loop in social psychology. How calibrated silence, active micro-listening, and mirrored honesty break emotional guards in minutes.",
-    img: "/assets/real_thumbs/card_stranger.jpg",
-    videoSrc: "/videos/stranger_secret.mp4",
-    watchUrl: "https://www.youtube.com/@minimotionstudioss",
-  },
-  {
-    id: "rival-crumbles",
-    youtubeId: "kDHCSV1El3A",
-    title: "The Architect: I Destroyed a Corporate Rival – Then Regretted It",
-    category: "anime",
-    categoryLabel: "Flagship AI Series (The Architect)",
-    dotColor: "gold",
-    duration: "03:42",
-    desc: "A flagship cinematic production exploring corporate power dynamics, ruthless tactical retaliation, and the heavy psychological void left when victory arrives.",
-    img: "/assets/real_thumbs/kDHCSV1El3A.jpg",
-    watchUrl: "https://www.youtube.com/watch?v=kDHCSV1El3A",
-  },
 ];
 
 const PROCESS_STEPS = [
@@ -139,9 +139,11 @@ export default function Home() {
     showToast("✓ Studio email copied to clipboard!");
   };
 
-  const filteredFilms =
+    const filteredFilms =
     activeFilter === "all"
       ? FILMS
+      : activeFilter === "micro-drama"
+      ? FILMS.filter((f) => f.category === "micro-drama" || f.category === "hindi-drama")
       : FILMS.filter((f) => f.category === activeFilter);
 
   return (
@@ -267,7 +269,7 @@ export default function Home() {
             </h1>
             <div className="hero-tagline">IMAGINATION × AI × CINEMA</div>
             <p className="hero-desc">
-              Cinematic AI visual storytelling, dark psychology anime narratives, and emotionally compelling digital cinema directed by <strong className="text-white font-bold underline decoration-[#ff2a3b] decoration-2 underline-offset-4">Rahul Soni</strong>.
+              Cinematic AI visual storytelling, studio-grade vertical micro-dramas (The Alpha's Fated Mate, Badnaam De Luca), and emotionally compelling anime narratives directed by <strong className="text-white font-bold underline decoration-[#ff2a3b] decoration-2 underline-offset-4">Rahul Soni</strong>.
             </p>
             <div className="hero-actions-row flex items-center gap-3 flex-wrap">
               <a href="#films" className="btn-crimson">
@@ -345,13 +347,13 @@ export default function Home() {
               <h2 className="section-heading">Featured Films</h2>
             </div>
 
-            <div className="filter-tabs-capsule">
+                        <div className="filter-tabs-capsule">
               {[
                 { id: "all", label: "All Work" },
+                { id: "micro-drama", label: "AI Micro-Dramas" },
                 { id: "hindi-drama", label: "Hindi Micro-Drama" },
                 { id: "psychology", label: "Dark Psychology" },
                 { id: "anime", label: "Anime Stories" },
-                { id: "experiments", label: "AI Experiments" },
               ].map((tab) => (
                 <button
                   key={tab.id}
@@ -495,10 +497,10 @@ export default function Home() {
                   <span className="creator-highlight-badge">AI FILMMAKER</span>
                 </div>
                 <span className="creator-title">
-                  AI Video Creator · Prompt Specialist · Video Editor
+                  AI Filmmaker · Micro-Drama Showrunner · Lead Director
                 </span>
                 <p>
-                  Specializing in dark psychology storytelling, hyper-realistic anime cinema, and high-retention video production. Directing both English and Hindi storytelling channels.
+                  Creator and Director of studio-level vertical micro-dramas (The Alpha's Fated Mate, Badnaam De Luca) and 50+ cinematic AI productions. Specializing in character consistency, prompt direction, and high-retention episodic storytelling.
                 </p>
 
                 {/* Direct Contact & Resume links */}
@@ -698,7 +700,7 @@ export default function Home() {
               Let&apos;s Create Cinema
             </h3>
             <p className="text-[#94a3b8] text-[13.5px] leading-relaxed mb-6">
-              Connect with <strong className="text-white">Rahul Soni</strong> for AI film directing, dark psychology anime series, prompt engineering, or commercial campaigns.
+              Connect with <strong className="text-white">Rahul Soni</strong> for AI film directing, vertical micro-drama showrunning, prompt engineering, or commercial storytelling.
             </p>
 
             <div className="flex flex-col gap-3">
